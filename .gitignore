@@ -19,21 +19,39 @@ map-spike/page-baseline/
 skills-lock.json
 # 2026-11-15 审计留档（旧构建产物/回滚备份，仅存工作区，见 审计报告-20261115.md §2）
 _archive_20261116/
-# 资料区/验证/ 不忽略：历史验证留痕目录（含 20261117-客家卡文案/ 3 张 PNG）随仓库提交，与同级已跟踪验证目录保持一致
-素材归档/
+# 本地资料、验收证据及归档，不纳入开发发布
+/资料区/
+/素材归档/
 
-# 本轮视觉预览（可复现的源码与正式验收证据仍保留）
-/资料区/atlas-style-live-20261125/
-/资料区/atlas-style-preview-20261125/
-/资料区/home-map-only-20261125/
-/资料区/map-entry-live-20261125/
-/资料区/map-entry-preview-20261125/
-/资料区/ui-review-20261125/
-/资料区/github提交版/
-/资料区/ui-direction-preview.html
-/资料区/ui-preview-desktop.png
-/资料区/ui-preview-mobile.png
-
-# 构建快照与 Playwright 运行产物（正式验收证据目录本身不忽略）
-资料区/验证/20261125-正式首页接入/build-*/
-资料区/验证/20261125-正式首页接入/runs/
+# 未纳入公开首发的旧素材；已跟踪文件不受此规则影响
+/public/assets/audio/ambient-kitchen.wav
+/public/assets/audio/ambient-market.wav
+/public/assets/audio/ambient-opera.wav
+/public/assets/audio/narr-scene-cz-gongfu.mp3
+/public/assets/audio/narr-scene-fs-market.mp3
+/public/assets/audio/narr-scene-gz-arcade.mp3
+/public/assets/audio/narr-scene-gz-bye.mp3
+/public/assets/audio/narr-scene-gz-dimsum.mp3
+/public/assets/audio/narr-scene-gz-service.mp3
+/public/assets/audio/narr-scene-gz-tea.mp3
+/public/assets/audio/narr-scene-gz-yueju.mp3
+/public/assets/audio/phrase-yue-01.mp3
+/public/assets/audio/phrase-yue-02.mp3
+/public/assets/audio/phrase-yue-03.mp3
+/public/assets/audio/phrase-yue-04.mp3
+/public/assets/audio/phrase-yue-05.mp3
+/public/assets/audio/phrase-yue-06.mp3
+/public/assets/audio/phrase-yue-07.mp3
+/public/assets/audio/phrase-yue-08.mp3
+/public/assets/chaozhou-paifang.jpg
+/public/assets/foshan-fish-market.jpg
+/public/assets/foshan-market.jpg
+/public/assets/guangzhou-dimsum.jpg
+/public/assets/guangzhou-qilou.jpg
+/public/assets/guangzhou-service.jpg
+/public/assets/guangzhou-teahouse.jpg
+/public/assets/hakka-unicorn.jpeg
+/public/assets/hongkong-fire-dragon.jpeg
+/public/assets/macao-museum.jpg
+/public/assets/teochew-festival.jpeg
+/public/assets/yueju-stage.jpg
