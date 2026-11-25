@@ -1,0 +1,39 @@
+/* 三维地图层（阶段 1 · 镜头即路由）
+   —— 常驻画布：首页嵌进地图舞台（.atlas3d-host.is-stage），其它路由作为页面底图（is-ambient）
+   —— 城市名与贴纸仍是 DOM：中文可读、可选中、无障碍不因 canvas 退化 */
+.atlas3d-host{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;opacity:0;transition:opacity .28s ease}
+.atlas3d-host.is-stage{position:absolute;inset:0;opacity:1;pointer-events:auto}
+.atlas3d-host.is-ambient{position:fixed;inset:0;opacity:.2;filter:grayscale(.72) saturate(.6)}
+.atlas3d-canvas{display:block;width:100%;height:100%}
+.atlas3d-leaders{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:visible}
+.atlas3d-labels{position:absolute;inset:0;z-index:2;pointer-events:none}
+.atlas3d-stickers{position:absolute;inset:0;z-index:3;pointer-events:none}
+.atlas3d-label{position:absolute;transform:translate(-50%,-50%);font-size:13px;color:#3b423c;white-space:nowrap;pointer-events:none;font-weight:600;letter-spacing:.02em;text-shadow:0 1px 2px rgba(255,255,255,.98),0 0 5px rgba(255,247,231,.92),0 0 1px rgba(255,247,231,1)}
+.atlas3d-label.is-leader{font-weight:700;color:#3b423c}
+.atlas3d-sticker{position:absolute;transform:translate(-50%,-50%);display:flex;pointer-events:auto;width:48px;height:48px}
+.atlas3d-sticker .badge{width:48px;height:48px;border-radius:50%;border:2.5px solid rgba(90,74,48,.16);background:#ffffff;display:grid;place-items:center;overflow:hidden;box-shadow:none}
+.atlas3d-sticker img{display:block;width:100%;height:100%;object-fit:cover}
+/* 3D 模式下让出底层给画布：SVG 地图与 SVG 贴纸隐藏，但保留在 DOM 里（降级与回归断言用） */
+.atlas3d-mode .atlas-svg,.atlas3d-mode #replica-stickers{display:none}
+/* 路线页的路线地图：仅 3D 就绪时显示；光带串起该路线 3 个场景 */
+.atlas3d-route-map{display:none;margin-top:18px}
+html.atlas3d-on .atlas3d-route-map{display:block}
+.atlas3d-route-map-head{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
+.atlas3d-route-map-head b{font-size:15px}
+.atlas3d-route-map-head span{font-size:12px;color:var(--muted)}
+.atlas3d-route-slot{position:relative;height:320px;border-radius:2px;overflow:hidden;border:1px solid var(--hairline);background:radial-gradient(ellipse at 50% 55%,#eef2ee,transparent 70%)}
+.atlas3d-route-slot .atlas3d-host{opacity:1}
+
+/* 路由切换后焦点会移到新页标题（无障碍需要）。整块 outline 在封面照上像一道误加的边框，
+   改成标题左侧的一道细竖条：可被看见，但不破坏版面。 */
+main h1:focus-visible{outline:2px solid transparent;outline-offset:2px;box-shadow:inset 0 0 0 2px #245b4d;border-radius:2px}
+
+/* 页眉里的「当前镜头」指示牌：说明镜头落在哪，不遮挡任何页面内容 */
+.atlas3d-where{display:none;align-items:center;gap:6px;padding:6px 12px;border-radius:2px;border:1px solid var(--line);background:#ffffffcc;font-size:.75rem;color:var(--muted);white-space:nowrap}
+html.atlas3d-on .atlas3d-where{display:inline-flex}
+.atlas3d-where i{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(36,91,77,.14)}
+@media(max-width:800px){.atlas3d-where{display:none!important}}
+
+/* 画布是 fixed 定位层：正文与页脚需要自建层叠上下文，否则会被画布盖住 */
+html.atlas3d-on main,html.atlas3d-on footer{position:relative;z-index:1}
+@media(prefers-reduced-motion:reduce){.atlas3d-host{transition:none}}

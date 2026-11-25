@@ -1,0 +1,96 @@
+/* 英歌原型 · 基础结构层：只保留布局、骨架与通用组件的结构性样式
+   （尺寸/间距/flex/grid/定位），所有颜色、边框、圆角、阴影、字体气质
+   统一由末位加载的 guochao.css 国潮主题层定义。
+   旧岭南漫游遗留组件（hero/art/sun/hill/region/scene-cover/home-sample/
+   route-card、qa-*、timeline、step、player、language 等）经全量 grep 确认未被
+   英歌六个视图引用，已随纸墨主题（editorial/aesthetics，备份于
+   backups/纸墨主题留存/）一并移除。 */
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.7 "Microsoft YaHei","PingFang SC","Noto Sans CJK SC",sans-serif;font-variant-numeric:tabular-nums}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+
+/* —— 框架壳（视觉在 guochao.css） —— */
+header{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:14px;height:72px;padding:0 clamp(20px,5vw,72px)}
+.brand{display:inline-flex;align-items:center;gap:9px;font-weight:800;letter-spacing:.08em;white-space:nowrap}
+.brand b{display:inline-grid;place-items:center;width:38px;height:38px;margin:0;font-size:20px;font-weight:700}
+header > nav{display:flex;gap:6px;font-size:13px}
+.header-actions{display:flex;gap:8px}
+main{max-width:1180px;margin:0 auto;padding:54px 28px 88px}
+footer{display:flex;justify-content:space-between;gap:15px;padding:20px clamp(20px,5vw,72px);font-size:12px}
+footer a{text-decoration:underline;text-underline-offset:2px}
+
+/* —— 通用文字与小组件 —— */
+.crumb{font-size:12px;margin-bottom:20px}
+.muted{font-size:13px}
+.small-note{font-size:12px;margin-top:10px}
+.tag{display:inline-block;padding:3px 9px;font-size:12px;font-weight:700}
+.case-badge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:700;vertical-align:middle}
+.case-line{margin:0 0 8px}
+.source-list{margin:8px 0 0;padding-left:18px;font-size:13px;line-height:1.7}
+.source-list li{margin-bottom:8px}
+
+/* —— 版式骨架 —— */
+.columns{display:grid;grid-template-columns:1.35fr .65fr;gap:22px;margin-top:20px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:17px 0}
+.banner{margin:27px 0;padding:22px;display:flex;justify-content:space-between;align-items:center;gap:18px}
+.banner h2{margin:6px 0 2px;font-size:24px}
+.banner p{margin:4px 0;font-size:14px}
+.card{padding:22px}
+.card h3{margin:8px 0 4px;font-size:20px}
+.card p{margin:0;font-size:13px}
+.chapter-list{display:grid;gap:9px;margin-top:10px}
+.empty{padding:40px 36px;text-align:center}
+
+/* —— 按钮（视觉在 guochao.css，这里只定结构；min-height 保证触控目标 ≥44px） —— */
+.btn{display:inline-block;border:2px solid transparent;padding:11px 18px;font-size:13px;font-weight:700;letter-spacing:.03em;min-height:44px;text-align:center}
+.btn.secondary{border:2px solid var(--line)}
+.btn.danger{background:#8f2410}
+
+/* —— 选项 / 结果反馈 / 记录行 / 笔记（P05/P06 复用） —— */
+.option{width:100%;margin:7px 0;padding:12px 14px;text-align:left}
+.result{margin-top:10px;padding:10px 12px}
+.result b{margin-right:6px}
+.result.good{background:#e3ece2}
+.result.bad{background:#f7d9cb}
+.result.warn{background:#f6e5bd}
+.record{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:11px 0;font-size:14px}
+.record:first-of-type{border-top:0}
+.record .info{min-width:0;flex:1}
+.record .info b{display:block;font-size:14px}
+.record .info p{margin:3px 0 0}
+.record .info .muted,.record .info span.muted{font-size:12px}
+.record-actions{flex:none;display:flex;gap:6px;align-items:flex-start;flex-wrap:wrap}
+.me-actions{display:flex;gap:8px;flex-wrap:wrap}
+.me-actions .btn{padding:7px 12px;font-size:12px}
+.mini-btn,a.mini-btn{display:inline-block;padding:5px 11px;font-size:12px}
+.note-area{width:100%;min-height:92px;margin:9px 0;padding:10px 12px;font:inherit;font-size:14px;color:inherit;resize:vertical}
+#export-json{display:inline-block}
+.me-resume{margin-top:14px}
+.me-resume p{margin:6px 0 10px}
+.record-list{display:grid;gap:0;margin-top:8px}
+
+/* —— 交互反馈节奏：按压跟手约 80ms，颜色/边框过渡约 160ms —— */
+.btn,.mini-btn,header button,.option{transition:background-color .16s ease,color .16s ease,border-color .16s ease,box-shadow .16s ease,opacity .16s ease,transform .08s ease}
+.btn:active,.mini-btn:active,header button:active,.option:active{transform:translateY(1px)}
+
+/* 动态结果柔边渐显（.qa-result/.rec-toast 已随旧原型移除） */
+@keyframes soft-in{from{opacity:0;filter:blur(2px);transform:translateY(2px)}to{opacity:1;filter:blur(0);transform:translateY(0)}}
+.result:not([hidden]){animation:soft-in .2s ease-out}
+
+/* 页面切换柔转（View Transitions，渐进增强）：仅 hash 路由切换由 JS 启用 */
+::view-transition-old(root),::view-transition-new(root){animation-duration:.18s;animation-timing-function:ease-out}
+@media(prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none!important}}
+html.reduced-motion::view-transition-old(root),html.reduced-motion::view-transition-new(root){animation:none!important}
+
+/* —— 响应式骨架 —— */
+@media(max-width:800px){
+.columns{grid-template-columns:1fr}
+.banner{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:520px){
+main{padding:34px 15px 58px}
+.facts{grid-template-columns:1fr 1fr}
+footer{flex-direction:column;gap:8px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

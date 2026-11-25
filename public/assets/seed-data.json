@@ -1,0 +1,1027 @@
+{
+  "version": "0.3",
+  "theme": {
+    "id": "theme-lingnan",
+    "name": "岭南文化"
+  },
+  "regions": [
+    {
+      "id": "region-gz",
+      "name": "广州",
+      "status": "open",
+      "description": "从西关街巷、早茶与骑楼生活认识广州。",
+      "culture_name": "广府文化",
+      "icon": "茶",
+      "color": "#f8d1c8",
+      "keywords": [
+        "早茶",
+        "骑楼",
+        "街坊生活"
+      ],
+      "cover_image": "assets/gz-teahouse.webp",
+      "cover_caption": "西关茶楼门面：半开的横栅与门上彩窗 · 项目原创示意，非陶陶居实景",
+      "source_url": "https://huacheng.gz-cmc.com/pages/2024/01/25/d32f28cf80d64a1fbb95a3c2b9eaacd3.html"
+    },
+    {
+      "id": "region-fs",
+      "name": "佛山",
+      "status": "planned",
+      "description": "从传统饮食与街市生活认识佛山。",
+      "culture_name": "广府文化",
+      "icon": "市",
+      "color": "#d8ebdf",
+      "keywords": [
+        "街市",
+        "饮食",
+        "岭南生活"
+      ],
+      "source_url": "https://news.qq.com/rain/a/20240211A05HA100"
+    },
+    {
+      "id": "region-cz",
+      "name": "潮汕",
+      "status": "open",
+      "description": "从工夫茶、牌坊街与潮汕饮食认识潮汕。",
+      "culture_name": "潮汕文化",
+      "icon": "茗",
+      "color": "#d4e2f2",
+      "keywords": [
+        "工夫茶",
+        "牌坊街",
+        "潮汕饮食"
+      ],
+      "cover_image": "assets/cz-paifang.webp",
+      "cover_caption": "牌坊四柱三间与两侧街廊 · 项目原创空间示意，非特定牌坊复原",
+      "source_url": "https://www.chaozhou.gov.cn/czzjj/gkmlpt/content/3/3771/mpost_3771701.html"
+    },
+    {
+      "id": "region-mz",
+      "name": "梅州",
+      "status": "planned",
+      "description": "从围龙屋、酿豆腐与客家山歌，认识梅州的聚居生活与饮食记忆。",
+      "culture_name": "客家文化",
+      "icon": "客",
+      "color": "#d6e6c3",
+      "keywords": [
+        "围龙屋",
+        "酿豆腐",
+        "客家山歌"
+      ]
+    },
+    {
+      "id": "region-hk",
+      "name": "香港",
+      "status": "planned",
+      "description": "从粤语生活、城市街区与节俗，认识香港的地方文化。大坑舞火龙的夜间场面，展现街坊共同参与的文化记忆。",
+      "culture_name": "香港 · 城市文化",
+      "icon": "港",
+      "color": "#a9cadd",
+      "keywords": [
+        "粤语生活",
+        "城市街区",
+        "大坑舞火龙"
+      ],
+      "source_url": "https://www.icho.hk/en/web/icho/representative_list_taihang.html"
+    },
+    {
+      "id": "region-mo",
+      "name": "澳门",
+      "status": "planned",
+      "description": "从历史街区、建筑和博物馆认识澳门。街巷中的中西文化联系，为理解这座城市提供不同的观察角度。",
+      "culture_name": "澳门 · 文化交汇",
+      "icon": "澳",
+      "color": "#e1cc9c",
+      "keywords": [
+        "历史街区",
+        "中西文化",
+        "澳门博物馆"
+      ],
+      "source_url": "https://www.macaumuseum.gov.mo/"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "scene-gz-qilou",
+      "title": "骑楼柱廊：一条有瓦遮头的街",
+      "region_id": "region-gz",
+      "topic": "architecture",
+      "phrase_id": "phrase-yue-09",
+      "cover_image": "assets/gz-arcade.webp",
+      "cover_caption": "广州骑楼廊下：临街柱与退后铺门 · 项目原创空间示意，非特定店面实景",
+      "source_url": "https://www.gz.gov.cn/zlgz/whgz/content/post_8564096.html",
+      "narrative": {
+        "story": "落雨的时候，骑楼街最好行。楼上人家的屋檐向外伸，替行人留出一条有瓦遮头的长廊；街坊在柱廊下收伞、抖水，顺口讲两句早晨。天热的时候，铺头把货箱推到廊下，行人挨着柱身慢慢行，单车在柱与柱之间穿来穿去。一条街的铺头、住家与过路的人，就在这条廊道里错身。走到街尾回头望，柱与柱之间像一列拉长的门。",
+        "place": "广州老城的骑楼街：楼上住人，楼下开铺，柱廊把整条人行道连成一条公共走廊。",
+        "people": "收伞的街坊、看铺的店主、放学经过的学生——都在同一条廊道里进出。",
+        "objects": "斑驳的柱身、铺头的趟栊门、廊下晾着的雨伞与货箱。",
+        "audio_note": "旁白为粤语合成语音，用于原型演示；关键读音与史实待复核。",
+        "recording_plan": "环境声：骑楼下的雨声、单车铃声与人声；方言语音：街坊道别一句「慢慢行」。",
+        "audio_url": "assets/audio/narr-scene-gz-qilou.mp3",
+        "audio_source": "synthetic",
+        "audio_label": "合成旁白 · 非真人录音",
+        "ambient_url": "assets/audio/ambient-street.wav",
+        "ambient_source": "synthetic",
+        "ambient_label": "合成环境声 · 示意",
+        "ambient_note": "环境声为合成示意，非现场录音；用于呈现场景氛围。",
+        "review_status": "reviewed",
+        "source_note": "骑楼形制（楼上住人、一楼走廊防雨遮阳、商住两用）依据《广州日报》2022-09-14《百年骑楼筑老城肌理 廊下烟火延千载商脉》（广州市人民政府门户网站转载，https://www.gz.gov.cn/zlgz/whgz/content/post_8564096.html）；「楼下开铺」为广府通行形制，场景年代与具体街名待复核。"
+      },
+      "understanding_prompt": "骑楼柱廊如何支持街道生活？",
+      "understanding_options": [
+        "提供遮雨通道并连接沿街店铺",
+        "隔绝商铺与行人",
+        "只作为装饰立面"
+      ],
+      "understanding_answer": 0
+    },
+    {
+      "id": "scene-gz-xiguan",
+      "title": "西关茶楼：趟栊门后的早市",
+      "region_id": "region-gz",
+      "topic": "architecture",
+      "phrase_id": "phrase-yue-10",
+      "cover_image": "assets/gz-teahouse.webp",
+      "cover_caption": "西关茶楼门面：半开的横栅与门上彩窗 · 项目原创示意，非陶陶居实景",
+      "source_url": "https://huacheng.gz-cmc.com/pages/2024/01/25/d32f28cf80d64a1fbb95a3c2b9eaacd3.html",
+      "narrative": {
+        "story": "西关的茶楼，门面常常是一道趟栊门：几根圆木横向推拉，开一半，留一半，既通风又挡人。清早开门，伙计把门趟开，茶客就顺着楼梯上二楼。窗上装的是岭南花窗，日光透过彩色玻璃，落在卡座的云石台面上。满洲窗是岭南常见的彩色玻璃窗做法；本场景的窗样参照陶陶居总店 2021 年升级修缮后所设的岭南花窗（含红蓝满洲窗），属修缮新装，不是老茶楼的原构物。熟客不用看点心纸，开口就是惯常那几样；生客学着邻座，先叫一壶茶，再慢慢睇下先。",
+        "place": "广州西关的一间老茶楼：趟栊门、木楼梯、岭南花窗（含满洲窗，参照陶陶居总店 2021 年修缮后所设）与云石卡座。",
+        "people": "开门的伙计、上楼的茶客、带生客来饮茶的街坊。",
+        "objects": "趟栊门的圆木、岭南花窗（含满洲窗，参照陶陶居总店 2021 年修缮后所设）、云石台面、桌上的点心纸与茶壶。",
+        "audio_note": "旁白为粤语合成语音，用于原型演示；关键读音与史实待复核。",
+        "recording_plan": "环境声：趟栊门推拉声、楼梯脚步声与茶楼人声；方言语音：茶客说「睇下先」。",
+        "audio_url": "assets/audio/narr-scene-gz-xiguan.mp3",
+        "audio_source": "synthetic",
+        "audio_label": "合成旁白 · 非真人录音",
+        "ambient_url": "assets/audio/ambient-tea.wav",
+        "ambient_source": "synthetic",
+        "ambient_label": "合成环境声 · 示意",
+        "ambient_note": "环境声为合成示意，非现场录音；用于呈现场景氛围。",
+        "review_status": "reviewed",
+        "source_note": "内容据场景图文卡与广府茶楼建筑通行做法整理；封面是通用茶楼门面示意，不是陶陶居实景；文中窗样与二楼趟栊门依广州市商务局《闭馆两年半 陶陶居总店明天试业》所记 2021 年升级修缮后所设岭南花窗（含红蓝满洲窗），满洲窗为修缮新装、非老茶楼原构；具体茶楼名称与年代不详。"
+      },
+      "understanding_prompt": "趟栊门与岭南花窗分别带来什么空间效果？",
+      "understanding_options": [
+        "通风与采光",
+        "隔音与遮光",
+        "储物与防潮"
+      ],
+      "understanding_answer": 0
+    },
+    {
+      "id": "scene-gz-street",
+      "title": "街区变迁：恩宁路的新与旧",
+      "region_id": "region-gz",
+      "topic": "architecture",
+      "phrase_id": "phrase-yue-11",
+      "cover_image": "assets/gz-arcade.webp",
+      "cover_caption": "广州骑楼街廊空间 · 项目原创示意，非恩宁路改造前后实景",
+      "source_url": "http://culture.people.com.cn/n1/2020/0717/c1013-31787368.html",
+      "narrative": {
+        "story": "同一条恩宁路，能同时看到旧时光和今天的日子。骑楼柱廊连成一气，麻石路面被脚步磨出光面，趟栊门后的老铺照旧做街坊生意。2016 年起，荔湾区把永庆坊作为旧城微改造项目分两期推进，秉承「修旧如旧，新旧融合」的微改造理念，用「绣花」功夫修缮老建筑、保持街巷肌理。一期是老建筑保留下来、恢复原貌，官方比作「旧瓶装新酒」；二期则是拆平后全新建设，用岭南传统建筑材料与工艺营造传统岭南园林，官方比作「新瓶装旧酒」。修缮后的街区里，咖啡店、文创店与非遗展示角开进骑楼古巷，与老铺同在一条柱廊下营业；老街坊照旧在骑楼下生活，游客举着相机拍「新旧同框」。要说「街区变迁不是把旧街抹掉重来」，指的是一期：老街的骨架还在，继续承载今天的生活。",
+        "place": "广州荔湾恩宁路·永庆坊骑楼街区：柱廊、麻石路与趟栊门连成的老街。",
+        "people": "做街坊生意的老铺主、在骑楼古巷开文创店与咖啡店的年轻店主、来看「新旧同框」的游客。",
+        "objects": "麻石路、趟栊门、骑楼柱廊、老瓦当与新招牌。",
+        "audio_note": "旁白待补录：将以粤语合成或真人录音呈现；当前可阅读文字稿完成学习。",
+        "recording_plan": "旁白：恩宁路的新与旧（约 1 分钟）；环境声：骑楼街人声与脚步；方言语音：街坊赞一句「好睇」。",
+        "audio_url": null,
+        "audio_source": "synthetic",
+        "audio_label": "合成旁白 · 非真人录音",
+        "ambient_url": "assets/audio/ambient-street.wav",
+        "ambient_source": "synthetic",
+        "ambient_label": "合成环境声 · 示意",
+        "ambient_note": "环境声为合成示意（骑楼街人声），非现场录音；现场声待补录。",
+        "review_status": "reviewed",
+        "source_note": "场景事实依据两篇公开报道整理：①微改造两期性质——「修旧如旧，新旧融合」，一期把老建筑保留下来、恢复原来的风貌（「旧瓶装新酒」），二期建筑为拆平后全新建设（「新瓶装旧酒」），依据中新社 2020-07-16《广州永庆坊：微改造让历史文化街区「活起来」」（人民网 2020-07-17 转载）引荔湾区住房和建设局调研员江伟辉语；②麻石路依据《人民日报》2020-06-15 头版 01 版《（探索城市精细化管理新路子）广州永庆坊 今天更青春》（本报记者 贺林平；中共广东省委组织部转载，https://www.gdzz.gov.cn/zgxc/zysy/content/post_7273.html），原文为「为保留麻石路的初始面貌，同时兼顾下水道排污，施工人员把麻石整块挖开，重新铺设管道后再恢复原貌」，该段位于原文「从永庆坊一期到2018年12月启动的二期」一段中，为跨期工序举例，未单独归为某一期；同篇另载「永庆坊第一期改造于2016年10月完成。走访这个约8000平方米的四方地，路面重新铺设了平整的麻石……」，可见麻石路面于第一期已重新铺设。文中「麻石路面被脚步磨出光面」为本项目的场景描写，非报道原文。封面为项目原创骑楼街廊空间示意，不能作为恩宁路特定地点改造前后的影像证据；当代对照图待补。"
+      },
+      "understanding_prompt": "关于恩宁路街区的变化，下面哪一句是材料里可以核实的事实，而不是个人感受？",
+      "understanding_options": [
+        "恩宁路骑楼经过「修旧如旧」的微改造，老铺与新店在同一条柱廊下营业",
+        "我觉得新店太多，老街都不像老街了",
+        "麻石路比水泥路好看一百倍"
+      ],
+      "understanding_answer": 0
+    },
+    {
+      "id": "scene-cz-yingge-role",
+      "title": "角色与装备：脸谱和英歌槌",
+      "region_id": "region-cz",
+      "topic": "folk",
+      "phrase_id": "phrase-cz-yingge-01",
+      "cover_image": "yingge/assets/yg-role.svg",
+      "cover_caption": "练习纸上的两种脸谱纹样与一对短槌 · 项目原创教学插图，不指认具体角色",
+      "source_url": "https://www.ihchina.cn/project_details/12902/",
+      "narrative": {
+        "story": "上场前，队员先整理脸谱和一对英歌槌。表演者按梁山泊英雄的形象勾画风格独特的角色脸谱，着武士服、紧身短打，每个人扮相不同；服饰与手持木槌共同构成舞者的角色形象。观察脸谱颜色、眉眼和槌的形制，再判断哪一组装备能帮助观众认出角色。",
+        "place": "揭阳普宁英歌队训练场",
+        "people": "扮演角色的舞者、整理装备的队员与观众",
+        "objects": "脸谱、武士服、一对短木棒（官方称「特制双短棒」，通行俗称「英歌槌」）",
+        "audio_note": "本场景地方原声待补；可阅读文字稿完成替代路径。",
+        "audio_url": null,
+        "audio_source": "synthetic",
+        "audio_label": "合成旁白 · 非真人录音",
+        "ambient_url": "assets/audio/ambient-street.wav",
+        "ambient_source": "synthetic",
+        "ambient_label": "合成环境声 · 示意",
+        "ambient_note": "环境声为合成示意，非现场录音。",
+        "source_note": "英歌文化身份与装备依据中国非物质文化遗产网「英歌（普宁英歌）」项目页（ihchina.cn/project_details/12902）；本场景为教学情境设计。",
+        "review_status": "reviewed"
+      },
+      "understanding_prompt": "脸谱和英歌槌分别帮助观众理解什么？",
+      "understanding_options": [
+        "角色形象与表演装备",
+        "演出时间与场地",
+        "队伍人数与座位"
+      ],
+      "understanding_answer": 0
+    },
+    {
+      "id": "scene-cz-yingge-team",
+      "title": "声音与协作：锣鼓与吆喝带动队伍",
+      "region_id": "region-cz",
+      "topic": "folk",
+      "phrase_id": "phrase-cz-yingge-02",
+      "cover_image": "yingge/assets/yg-team.svg",
+      "cover_caption": "英歌队列：六名队员此刻的相邻位置 · 项目原创示意，不表示变阵顺序",
+      "source_url": "https://www.ihchina.cn/project_details/12902/",
+      "narrative": {
+        "story": "锣鼓点和吆喝一起响起，舞者随节奏叩击英歌槌并同步行进。英歌节奏分慢板、中板、快板三类；队伍行进中还会变换队列图形，官方资料列出双龙出海、猛虎下山、麦穗花、田螺圈几种。变阵时，队员要留意相邻位置和队列间距，跟随共同的节奏提示一起移动。试着判断队员怎样从整齐的一列转为队形变化。",
+        "place": "普宁英歌队排练场",
+        "people": "击鼓者、领队与相邻协作的舞者",
+        "objects": "英歌槌、鼓、队列标记",
+        "audio_note": "本场景地方原声待补；可阅读文字稿完成替代路径。",
+        "audio_url": null,
+        "audio_source": "synthetic",
+        "audio_label": "合成旁白 · 非真人录音",
+        "ambient_url": "assets/audio/ambient-street.wav",
+        "ambient_source": "synthetic",
+        "ambient_label": "合成环境声 · 示意",
+        "ambient_note": "环境声为合成示意，非现场录音。",
+        "source_note": "节奏与队列依据中国非物质文化遗产网「英歌（普宁英歌）」项目页（ihchina.cn/project_details/12902）；画面与互动为本项目教学设计。",
+        "review_status": "reviewed"
+      },
+      "understanding_prompt": "锣鼓、吆喝与相邻队员的观察怎样共同帮助变阵？",
+      "understanding_options": [
+        "提供节奏线索并维持队形协作",
+        "替代排练和队员交流",
+        "只在散场时提示观众"
+      ],
+      "understanding_answer": 0
+    },
+    {
+      "id": "scene-cz-yingge-legacy",
+      "title": "排练与传承：从学会到上场",
+      "region_id": "region-cz",
+      "topic": "folk",
+      "phrase_id": "phrase-cz-01",
+      "cover_image": "yingge/assets/yg-legacy.svg",
+      "cover_caption": "两名练习者手持短槌的局部 · 项目原创情境，非传承人肖像或标准握法图解",
+      "source_url": "https://www.ihchina.cn/project_details/12902/",
+      "narrative": {
+        "story": "一场表演背后有反复排练和代际传承。队员从观察、学槌到参与队伍，需要在练习中熟悉节奏、位置与动作。回看一次排练记录，分辨哪些是公开资料记载，哪些是教学情境中的观察提示。",
+        "place": "普宁村落英歌队训练场",
+        "people": "青年队员、带练者与传承人",
+        "objects": "英歌槌、训练记录与队列图",
+        "audio_note": "本场景地方原声待补；可阅读文字稿完成替代路径。",
+        "audio_url": null,
+        "audio_source": "synthetic",
+        "audio_label": "合成旁白 · 非真人录音",
+        "ambient_url": "assets/audio/ambient-street.wav",
+        "ambient_source": "synthetic",
+        "ambient_label": "合成环境声 · 示意",
+        "ambient_note": "环境声为合成示意，非现场录音。",
+        "source_note": "传承背景依据中国非物质文化遗产网「英歌（普宁英歌）」项目页（ihchina.cn/project_details/12902）；人物故事需以逐条来源核对版本为准。",
+        "review_status": "reviewed"
+      },
+      "understanding_prompt": "什么做法有助于英歌技艺延续？",
+      "understanding_options": [
+        "队员持续学习、排练并参与表演",
+        "只保存服饰和道具",
+        "仅由观众自行观看"
+      ],
+      "understanding_answer": 0
+    }
+  ],
+  "phrases": [
+    {
+      "id": "phrase-yue-09",
+      "region_id": "region-gz",
+      "region_name": "广州",
+      "text": "慢慢行",
+      "reading": "maan6 maan6 haang4（粤拼 Jyutping，待母语者复核）",
+      "reading_note": "「行」指走路时读 haang4，韵母是拉长的 aa；同一个字读 hang4（如「一行字」）就变成「一排」的意思，初学最易混淆。",
+      "meaning_zh": "慢走",
+      "meaning_en": "Take care (said when seeing someone off)",
+      "speaker": "送客的东道主或茶楼伙计",
+      "audience": "起身告辞的客人",
+      "occasion": "道别送客时，祝人一路顺当",
+      "source_region": "广府地区（广州、佛山、港澳等地通用）",
+      "review_status": "pending_review",
+      "audio_status": "provided",
+      "audio_url": "assets/audio/phrase-yue-09.mp3",
+      "audio_source": "synthetic",
+      "audio_label": "合成语音 · 非真人录音"
+    },
+    {
+      "id": "phrase-yue-10",
+      "region_id": "region-gz",
+      "region_name": "广州",
+      "text": "睇下先",
+      "reading": "tai2 haa5 sin1（粤拼 Jyutping，待母语者复核）",
+      "reading_note": "「睇」读 tai2，是粤语讲「看」的专字；「下」读 haa5，不是普通话 xià 的音；句尾的「先」读 sin1，表示「先……再说」。",
+      "meaning_zh": "先看看",
+      "meaning_en": "Let me take a look first",
+      "speaker": "行街购物的街坊",
+      "audience": "店主或同行的人",
+      "occasion": "未决定买不买，先看一眼再说",
+      "source_region": "广府地区（广州、佛山、港澳等地通用）",
+      "review_status": "pending_review",
+      "audio_status": "provided",
+      "audio_url": "assets/audio/phrase-yue-10.mp3",
+      "audio_source": "synthetic",
+      "audio_label": "合成语音 · 非真人录音"
+    },
+    {
+      "id": "phrase-cz-01",
+      "region_id": "region-cz",
+      "region_name": "潮州",
+      "text": "食茶",
+      "reading": "ziah8 dê5（潮州话拼音，待母语者复核）",
+      "reading_note": "「食」读 ziah8，是带喉塞收尾的入声，念得短促；「茶」读 dê5，声母接近普通话的 d 但更松。潮汕各地口音略有出入，读音以母语者复核为准。",
+      "meaning_zh": "喝茶；请用茶",
+      "meaning_en": "Have some tea",
+      "speaker": "冲茶的主人或茶座长辈",
+      "audience": "同席的客人，尤其是头回上门的人",
+      "occasion": "工夫茶冲好斟满，主人请客人食茶",
+      "source_region": "潮汕地区（潮州、汕头、揭阳一带）",
+      "review_status": "pending_review",
+      "audio_status": "provided",
+      "audio_note": "由潮州母语网「食」「茶」两个单字真人发音拼接而成，非整句连续录音；读音与授权待复核。",
+      "audio_url": "assets/audio/phrase-cz-01.mp3",
+      "audio_source": "spliced",
+      "audio_label": "真人单字发音拼接 · 潮州母语网",
+      "audio_credit": "潮州母语网（Mogher）单字发音",
+      "audio_source_url": "https://www.mogher.com/%E9%A3%9F"
+    },
+    {
+      "id": "phrase-yue-11",
+      "region_id": "region-gz",
+      "region_name": "广州",
+      "text": "好睇",
+      "reading": "hou2 tai2（粤拼 Jyutping，待母语者复核）",
+      "reading_note": "「睇」是粤语讲「看」的常用字，读 tai2；「好睇」本义是好看，夸戏、夸街、夸景都用得。",
+      "meaning_zh": "好看；精彩",
+      "meaning_en": "Good to watch / enjoyable",
+      "speaker": "逛骑楼街的街坊与游客",
+      "audience": "同行的朋友",
+      "occasion": "看到骑楼街景、展览或好看的铺面时",
+      "source_region": "广府地区（广州、佛山、港澳等地通用）",
+      "review_status": "pending_review",
+      "audio_status": "provided",
+      "audio_url": "assets/audio/phrase-yue-11.mp3",
+      "audio_source": "synthetic",
+      "audio_label": "合成语音 · 非真人录音"
+    },
+    {
+      "id": "phrase-cz-yingge-01",
+      "region_id": "region-cz",
+      "region_name": "潮汕",
+      "text": "英歌槌",
+      "reading": "待母语者复核",
+      "reading_note": "读音整理自公开资料，待潮汕母语者复核。",
+      "meaning_zh": "英歌表演中成对使用的短木棒（官方称「特制双短棒」，每人各执两根，直径约 10 厘米、长约 20 厘米）",
+      "meaning_en": "英歌表演中成对使用的短木棒",
+      "speaker": "英歌舞者",
+      "audience": "英歌队员与现场观众",
+      "occasion": "介绍表演装备时",
+      "source_region": "潮汕地区（揭阳·普宁）",
+      "review_status": "pending_review",
+      "audio_status": "none",
+      "audio_note": "整句示范音频待补；可阅读文字稿完成替代路径。",
+      "audio_credit": "潮州母语网（Mogher）单字发音",
+      "audio_source_url": "https://www.mogher.com/%E9%A3%9F"
+    },
+    {
+      "id": "phrase-cz-yingge-02",
+      "region_id": "region-cz",
+      "region_name": "潮汕",
+      "text": "双龙出海",
+      "reading": "待母语者复核",
+      "reading_note": "读音整理自公开资料，待潮汕母语者复核。",
+      "meaning_zh": "英歌队列的一种变化形式，官方并列列出的还有猛虎下山、麦穗花、田螺圈",
+      "meaning_en": "英歌队列的一种变化形式",
+      "speaker": "引导队员",
+      "audience": "英歌队员与现场观众",
+      "occasion": "排练讲解队形变化时",
+      "source_region": "潮汕地区（揭阳·普宁）",
+      "review_status": "pending_review",
+      "audio_status": "none",
+      "audio_note": "整句示范音频待补；可阅读文字稿完成替代路径。",
+      "audio_credit": "潮州母语网（Mogher）单字发音",
+      "audio_source_url": "https://www.mogher.com/%E9%A3%9F"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "task-gz-1",
+      "route_id": "route-arcade-market",
+      "scene_id": "scene-gz-qilou",
+      "type": "choice",
+      "prompt": "骑楼柱廊为街道生活提供了什么？",
+      "options": [
+        "遮雨通行与临街交往",
+        "只用于观赏装饰",
+        "隔绝街道与商铺"
+      ],
+      "answer": 0,
+      "explanation": "柱廊连起店铺和人行空间，也为行人遮雨。"
+    },
+    {
+      "id": "task-gz-2",
+      "route_id": "route-arcade-market",
+      "scene_id": "scene-gz-xiguan",
+      "type": "listening",
+      "prompt": "趟栊门和岭南花窗共同呈现了茶楼怎样的空间特点？",
+      "options": [
+        "通风、采光并连接街巷生活",
+        "完全封闭以隔绝人声",
+        "只用于储存茶叶"
+      ],
+      "answer": 0,
+      "explanation": "趟栊门便于通风，岭南花窗（含满洲窗）透光，二者与茶楼日常使用相连；本场景窗样参照陶陶居 2021 年修缮后所设，非老茶楼原构。"
+    },
+    {
+      "id": "task-gz-3",
+      "route_id": "route-arcade-market",
+      "scene_id": "scene-gz-street",
+      "type": "choice",
+      "prompt": "恩宁路骑楼街区的更新方式，最贴近材料里提到的哪一种思路？",
+      "options": [
+        "拆掉老骑楼，整体重建商业街",
+        "修旧如旧、新旧融合（一期）：保留骑楼骨架，让老铺与新店继续在同一条街生活",
+        "封闭整条街只做展览，禁止日常经营"
+      ],
+      "answer": 1,
+      "explanation": "报道明确微改造「摒弃『推倒重建』的模式」，按「修旧如旧，新旧融合」推进；这是一期的做法，老铺与新店在同一条柱廊下继续生活（二期为拆平后全新建设，官方称「新瓶装旧酒」）。"
+    },
+    {
+      "id": "task-cz-1",
+      "route_id": "route-yingge-before",
+      "scene_id": "scene-cz-yingge-role",
+      "type": "choice",
+      "prompt": "脸谱和英歌槌在上场前分别帮助观众认识什么？",
+      "options": [
+        "角色形象与表演装备",
+        "演出地点与时间",
+        "队伍人数与座位"
+      ],
+      "answer": 0,
+      "explanation": "脸谱对应角色，英歌槌是舞者手持并随节奏叩击的装备。"
+    },
+    {
+      "id": "task-cz-2",
+      "route_id": "route-yingge-before",
+      "scene_id": "scene-cz-yingge-team",
+      "type": "listening",
+      "prompt": "锣鼓和吆喝对英歌队伍的作用是什么？",
+      "options": [
+        "锣鼓点和吆喝为动作与队列协作提供共同节奏线索",
+        "只在演出结束后使用",
+        "替代队员观察相邻位置"
+      ],
+      "answer": 0,
+      "explanation": "鼓点与吆喝是共同时间线索，队员还需观察相邻位置。"
+    },
+    {
+      "id": "task-cz-3",
+      "route_id": "route-yingge-before",
+      "scene_id": "scene-cz-yingge-legacy",
+      "type": "route",
+      "prompt": "以下哪项最能说明英歌传承如何发生？",
+      "options": [
+        "通过持续排练与队员参与延续技艺",
+        "只靠保存服饰和道具",
+        "完全由观众自行学习完成"
+      ],
+      "answer": 0,
+      "explanation": "传承依托队员参与、持续训练及相关文化实践。"
+    }
+  ],
+  "routes": [
+    {
+      "id": "route-arcade-market",
+      "name": "骑楼与市井",
+      "theme_key": "architecture",
+      "theme_name": "特色建筑与历史遗迹",
+      "region_ids": [
+        "region-gz"
+      ],
+      "description": "沿骑楼柱廊、西关茶楼与恩宁路街巷，认识广州建筑、市井与街区变迁。",
+      "estimated_minutes": 25,
+      "cover_image": "assets/gz-arcade.webp",
+      "cover_caption": "广州骑楼廊下：临街柱与退后铺门 · 项目原创空间示意，非特定店面实景",
+      "source_url": "https://www.gz.gov.cn/zlgz/whgz/content/post_8564096.html",
+      "scene_ids": [
+        "scene-gz-qilou",
+        "scene-gz-xiguan",
+        "scene-gz-street"
+      ],
+      "next_route_id": "route-yingge-before",
+      "completion_rule": "3 个场景全部完成或降级完成，且完整提交 3 题路线任务"
+    },
+    {
+      "id": "route-yingge-before",
+      "name": "英歌上场前",
+      "theme_key": "folk",
+      "theme_name": "节庆与民俗",
+      "region_ids": [
+        "region-cz"
+      ],
+      "description": "以普宁英歌为例，从角色与装备、声音与协作到排练与传承，观察一场英歌表演如何准备就绪。",
+      "estimated_minutes": 25,
+      "cover_image": "yingge/assets/yingge-hero.svg",
+      "cover_caption": "排练前的鼓与成对短槌 · 项目原创静物示意",
+      "source_url": "https://www.ihchina.cn/project_details/12902/",
+      "scene_ids": [
+        "scene-cz-yingge-role",
+        "scene-cz-yingge-team",
+        "scene-cz-yingge-legacy"
+      ],
+      "next_route_id": null,
+      "completion_rule": "3 个场景全部完成或降级完成，且完整提交 3 题路线任务",
+      "source": "来源：中国非物质文化遗产网「英歌（普宁英歌）」项目页（ihchina.cn/project_details/12902）；路线三阶段编排见《岭南游纪》MVP 功能设计方案 V1.0 §2.1。"
+    }
+  ],
+  "qa": [
+    {
+      "id": "qa-gz-qilou-1",
+      "scene_id": "scene-gz-qilou",
+      "question": "为什么落雨天在骑楼街最好行？",
+      "keywords": [
+        "落雨",
+        "避雨",
+        "屋檐",
+        "有瓦遮头",
+        "长廊"
+      ],
+      "answer": "楼上人家的屋檐向外伸，替行人留出一条有瓦遮头的长廊；街坊就在柱廊下收伞、抖水，顺口讲两句早晨。",
+      "source": "本场景叙事《骑楼柱廊：一条有瓦遮头的街》（骑楼「楼上住人、楼下开铺」为广府通行形制，未逐条附来源；链接供阅读背景资料，非插图来源）",
+      "source_url": "https://www.gz.gov.cn/zlgz/whgz/content/post_8564096.html",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "qa-gz-qilou-2",
+      "scene_id": "scene-gz-qilou",
+      "question": "天气热的时候，铺头把货箱推到哪里？",
+      "keywords": [
+        "天热",
+        "货箱",
+        "廊下",
+        "铺头",
+        "柱身"
+      ],
+      "answer": "天热时铺头把货箱推到廊下，行人挨着柱身慢慢行，单车在柱与柱之间穿来穿去。",
+      "source": "本场景叙事《骑楼柱廊：一条有瓦遮头的街》（骑楼「楼上住人、楼下开铺」为广府通行形制，未逐条附来源；链接供阅读背景资料，非插图来源）",
+      "source_url": "https://www.gz.gov.cn/zlgz/whgz/content/post_8564096.html",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "qa-gz-qilou-3",
+      "scene_id": "scene-gz-qilou",
+      "question": "骑楼的柱廊把什么连在了一起？",
+      "keywords": [
+        "柱廊",
+        "公共走廊",
+        "人行道",
+        "铺头",
+        "住家"
+      ],
+      "answer": "柱廊把整条人行道连成一条公共走廊，一条街的铺头、住家与过路的人就在这条廊道里错身。",
+      "source": "本场景叙事《骑楼柱廊：一条有瓦遮头的街》（骑楼「楼上住人、楼下开铺」为广府通行形制，未逐条附来源；链接供阅读背景资料，非插图来源）",
+      "source_url": "https://www.gz.gov.cn/zlgz/whgz/content/post_8564096.html",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "qa-gz-qilou-4",
+      "scene_id": "scene-gz-qilou",
+      "question": "走到骑楼街街尾回头，会看到什么？",
+      "keywords": [
+        "街尾",
+        "柱",
+        "门",
+        "回头",
+        "景象"
+      ],
+      "answer": "走到街尾回头望，柱与柱之间像一列拉长的门。",
+      "source": "本场景叙事《骑楼柱廊：一条有瓦遮头的街》（骑楼「楼上住人、楼下开铺」为广府通行形制，未逐条附来源；链接供阅读背景资料，非插图来源）",
+      "source_url": "https://www.gz.gov.cn/zlgz/whgz/content/post_8564096.html",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "qa-gz-qilou-5",
+      "scene_id": "scene-gz-qilou",
+      "question": "骑楼街的楼上楼下分别是什么？",
+      "keywords": [
+        "楼上住人",
+        "楼下开铺",
+        "骑楼",
+        "结构"
+      ],
+      "answer": "广州老城的骑楼街多是楼上住人、楼下开铺，屋檐外伸，柱廊把整条人行道连成一条公共走廊。",
+      "source": "本场景叙事《骑楼柱廊：一条有瓦遮头的街》（骑楼「楼上住人、楼下开铺」为广府通行形制，未逐条附来源；链接供阅读背景资料，非插图来源）",
+      "source_url": "https://www.gz.gov.cn/zlgz/whgz/content/post_8564096.html",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "qa-gz-xiguan-1",
+      "scene_id": "scene-gz-xiguan",
+      "question": "西关茶楼的趟栊门是什么样子的？",
+      "keywords": [
+        "趟栊门",
+        "圆木",
+        "推拉",
+        "通风",
+        "挡人"
+      ],
+      "answer": "趟栊门由几根圆木横向推拉，开一半、留一半，既通风又挡人。",
+      "source": "本场景叙事《西关茶楼：趟栊门后的早市》（趟栊门为广府茶楼通行做法，未逐条附来源；链接供阅读背景资料，非插图来源）",
+      "source_url": "https://huacheng.gz-cmc.com/pages/2024/01/25/d32f28cf80d64a1fbb95a3c2b9eaacd3.html",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "qa-gz-xiguan-2",
+      "scene_id": "scene-gz-xiguan",
+      "question": "岭南花窗（含满洲窗）给茶楼带来什么效果？",
+      "keywords": [
+        "岭南花窗",
+        "满洲窗",
+        "彩色玻璃",
+        "日光",
+        "云石台面",
+        "卡座",
+        "2021",
+        "修缮"
+      ],
+      "answer": "窗上装的是岭南花窗，日光透过彩色玻璃，落在卡座的云石台面上。满洲窗是其中一种做法；本场景参照的是陶陶居总店 2021 年升级修缮后所设的花窗，属新装而非老茶楼原构。",
+      "source": "本场景叙事《西关茶楼：趟栊门后的早市》；窗样依据广州市商务局《闭馆两年半 陶陶居总店明天试业》（陶陶居 2021 年升级修缮后所设岭南花窗）",
+      "source_url": "https://huacheng.gz-cmc.com/pages/2024/01/25/d32f28cf80d64a1fbb95a3c2b9eaacd3.html",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "qa-gz-xiguan-3",
+      "scene_id": "scene-gz-xiguan",
+      "question": "第一次去西关茶楼，应该怎么点？",
+      "keywords": [
+        "生客",
+        "第一次",
+        "叫茶",
+        "睇下先",
+        "邻座"
+      ],
+      "answer": "生客可以学着邻座，先叫一壶茶，再慢慢睇下先。",
+      "source": "本场景叙事《西关茶楼：趟栊门后的早市》（趟栊门为广府茶楼通行做法，未逐条附来源；链接供阅读背景资料，非插图来源）",
+      "source_url": "https://huacheng.gz-cmc.com/pages/2024/01/25/d32f28cf80d64a1fbb95a3c2b9eaacd3.html",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "qa-gz-xiguan-4",
+      "scene_id": "scene-gz-xiguan",
+      "question": "熟客去茶楼还要看点心的点心纸吗？",
+      "keywords": [
+        "熟客",
+        "点心纸",
+        "惯常",
+        "开口",
+        "点单"
+      ],
+      "answer": "熟客不用看点心纸，开口就是惯常那几样。",
+      "source": "本场景叙事《西关茶楼：趟栊门后的早市》（趟栊门为广府茶楼通行做法，未逐条附来源；链接供阅读背景资料，非插图来源）",
+      "source_url": "https://huacheng.gz-cmc.com/pages/2024/01/25/d32f28cf80d64a1fbb95a3c2b9eaacd3.html",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "qa-gz-xiguan-5",
+      "scene_id": "scene-gz-xiguan",
+      "question": "茶客是怎么上二楼的？",
+      "keywords": [
+        "开门",
+        "伙计",
+        "趟开",
+        "楼梯",
+        "二楼"
+      ],
+      "answer": "清早开门，伙计把门趟开，茶客就顺着楼梯上二楼。",
+      "source": "本场景叙事《西关茶楼：趟栊门后的早市》（趟栊门为广府茶楼通行做法，未逐条附来源；链接供阅读背景资料，非插图来源）",
+      "source_url": "https://huacheng.gz-cmc.com/pages/2024/01/25/d32f28cf80d64a1fbb95a3c2b9eaacd3.html",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "qa-role-1",
+      "scene_id": "scene-cz-yingge-role",
+      "question": "英歌槌是什么？",
+      "keywords": [
+        "英歌槌",
+        "短木棒",
+        "装备"
+      ],
+      "answer": "英歌槌是一对短木棒，舞者随锣鼓节奏叩击。官方文本称这对手持器具为「特制双短棒」，每人各执两根，直径约 10 厘米、长约 20 厘米；「英歌槌」是通行俗称。",
+      "source": "中国非物质文化遗产网「英歌（普宁英歌）」项目页（ihchina.cn/project_details/12902）",
+      "source_url": "https://www.ihchina.cn/project_details/12902/",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "qa-role-2",
+      "scene_id": "scene-cz-yingge-role",
+      "question": "脸谱有什么作用？",
+      "keywords": [
+        "脸谱",
+        "角色",
+        "梁山泊"
+      ],
+      "answer": "脸谱依据角色形象勾画，帮助呈现舞者扮演的人物。官方描述为：表演者按梁山泊英雄形象造型，着武士服、紧身短打，每个人扮相不同。",
+      "source": "中国非物质文化遗产网「英歌（普宁英歌）」项目页（ihchina.cn/project_details/12902）",
+      "source_url": "https://www.ihchina.cn/project_details/12902/",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "qa-role-3",
+      "scene_id": "scene-cz-yingge-role",
+      "question": "每个地方的脸谱和角色分配都相同吗？",
+      "keywords": [
+        "相同",
+        "不同",
+        "队伍"
+      ],
+      "answer": "不同村落、队伍的角色分配和具体呈现可能不同。",
+      "source": "中国非物质文化遗产网「英歌（普宁英歌）」项目页（ihchina.cn/project_details/12902）",
+      "source_url": "https://www.ihchina.cn/project_details/12902/",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "qa-role-4",
+      "scene_id": "scene-cz-yingge-role",
+      "question": "本页的脸谱图是真实历史照片吗？",
+      "keywords": [
+        "图片",
+        "照片",
+        "示意"
+      ],
+      "answer": "页面标注为教学示意，不应当作真实历史照片。",
+      "source": "本项目教学素材说明：脸谱图为课程自编教学示意，非历史照片；非遗身份信息见中国非物质文化遗产网「英歌（普宁英歌）」项目页（ihchina.cn/project_details/12902）",
+      "source_url": "https://www.ihchina.cn/project_details/12902/",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "qa-role-5",
+      "scene_id": "scene-cz-yingge-role",
+      "question": "英歌表演的文化身份是什么？",
+      "keywords": [
+        "非遗",
+        "文化身份",
+        "传统舞蹈"
+      ],
+      "answer": "普宁英歌列入国家级非物质文化遗产代表性项目名录，类别为传统舞蹈。",
+      "source": "中国非物质文化遗产网「英歌（普宁英歌）」项目页（ihchina.cn/project_details/12902）",
+      "source_url": "https://www.ihchina.cn/project_details/12902/",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "qa-team-1",
+      "scene_id": "scene-cz-yingge-team",
+      "question": "锣鼓点和吆喝怎样帮助队伍？",
+      "keywords": [
+        "鼓点",
+        "锣鼓",
+        "吆喝",
+        "节奏",
+        "慢板",
+        "中板",
+        "快板",
+        "队伍"
+      ],
+      "answer": "锣鼓点和吆喝为舞者动作和队伍协作提供共同节奏线索。官方对英歌节奏的表述是「配合锣鼓点和吆喝」，节奏分慢板、中板、快板三类。",
+      "source": "中国非物质文化遗产网「英歌（普宁英歌）」项目页（ihchina.cn/project_details/12902）",
+      "source_url": "https://www.ihchina.cn/project_details/12902/",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "qa-team-2",
+      "scene_id": "scene-cz-yingge-team",
+      "question": "队伍变阵时要观察什么？",
+      "keywords": [
+        "变阵",
+        "相邻",
+        "位置"
+      ],
+      "answer": "队员要关注相邻队员的位置、间距与队形变化。",
+      "source": "本项目教学示意；队列依据中国非物质文化遗产网「英歌（普宁英歌）」项目页（ihchina.cn/project_details/12902）设计",
+      "source_url": "https://www.ihchina.cn/project_details/12902/",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "qa-team-3",
+      "scene_id": "scene-cz-yingge-team",
+      "question": "英歌槌如何发声？",
+      "keywords": [
+        "槌",
+        "叩击",
+        "发声"
+      ],
+      "answer": "舞者手持短木棒并随节奏上下左右叩击。",
+      "source": "中国非物质文化遗产网「英歌（普宁英歌）」项目页（ihchina.cn/project_details/12902）",
+      "source_url": "https://www.ihchina.cn/project_details/12902/",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "qa-team-4",
+      "scene_id": "scene-cz-yingge-team",
+      "question": "双龙出海是什么？",
+      "keywords": [
+        "双龙出海",
+        "队列",
+        "变化"
+      ],
+      "answer": "双龙出海是英歌队列变化形式之一；官方并列列出的图形还有猛虎下山、麦穗花、田螺圈。",
+      "source": "中国非物质文化遗产网「英歌（普宁英歌）」项目页（ihchina.cn/project_details/12902）",
+      "source_url": "https://www.ihchina.cn/project_details/12902/",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "qa-team-5",
+      "scene_id": "scene-cz-yingge-team",
+      "question": "教学练习的等间隔提示等于真实鼓点吗？",
+      "keywords": [
+        "等间隔",
+        "真实",
+        "练习"
+      ],
+      "answer": "不等同。页面中的等间隔提示是教学练习设计，真实鼓点有其具体节奏。",
+      "source": "本项目教学素材说明：等间隔鼓点为教学练习设计，不等同真实英歌鼓点；官方节奏表述见中国非物质文化遗产网「英歌（普宁英歌）」项目页（ihchina.cn/project_details/12902）",
+      "source_url": "https://www.ihchina.cn/project_details/12902/",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "qa-legacy-1",
+      "scene_id": "scene-cz-yingge-legacy",
+      "question": "英歌传承包含哪些实践？",
+      "keywords": [
+        "传承",
+        "排练",
+        "学习"
+      ],
+      "answer": "包括队员学习、持续排练和参与表演等实践。",
+      "source": "中国非物质文化遗产网「英歌（普宁英歌）」项目页（ihchina.cn/project_details/12902）",
+      "source_url": "https://www.ihchina.cn/project_details/12902/",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "qa-legacy-2",
+      "scene_id": "scene-cz-yingge-legacy",
+      "question": "页面人物经历是否为人物原话？",
+      "keywords": [
+        "原话",
+        "人物",
+        "经历"
+      ],
+      "answer": "如引用具体人物经历，应以页面列出的公开报道来源为准，不能视作人物原话。",
+      "source": "本项目内容来源说明：页面人物经历为课程自编教学情境，非人物原话；英歌文化身份见中国非物质文化遗产网「英歌（普宁英歌）」项目页（ihchina.cn/project_details/12902）",
+      "source_url": "https://www.ihchina.cn/project_details/12902/",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "qa-legacy-3",
+      "scene_id": "scene-cz-yingge-legacy",
+      "question": "排练中动作不齐怎么办？",
+      "keywords": [
+        "排练",
+        "不齐",
+        "重来"
+      ],
+      "answer": "通过反复练习和队员协作改善动作与队形配合。",
+      "source": "中国非物质文化遗产网「英歌（普宁英歌）」项目页（ihchina.cn/project_details/12902）",
+      "source_url": "https://www.ihchina.cn/project_details/12902/",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "qa-legacy-4",
+      "scene_id": "scene-cz-yingge-legacy",
+      "question": "这条路线的三个阶段是什么？",
+      "keywords": [
+        "三个阶段",
+        "路线",
+        "角色"
+      ],
+      "answer": "依次观察角色与装备、声音与协作、排练与传承。",
+      "source": "《岭南游纪》MVP 功能设计方案 V1.0 §2.1：路线三阶段编排依据该方案；英歌背景见中国非物质文化遗产网「英歌（普宁英歌）」项目页（ihchina.cn/project_details/12902）",
+      "source_url": "https://www.ihchina.cn/project_details/12902/",
+      "review_status": "reviewed"
+    },
+    {
+      "id": "qa-legacy-5",
+      "scene_id": "scene-cz-yingge-legacy",
+      "question": "互动题答错会影响路线完成吗？",
+      "keywords": [
+        "答错",
+        "正确率",
+        "完成"
+      ],
+      "answer": "不会。路线完成依据场景流程和完整提交任务，不按答题正确率判定。",
+      "source": "《岭南游纪》MVP 功能设计方案 V1.0：路线完成规则依据该方案；英歌背景见中国非物质文化遗产网「英歌（普宁英歌）」项目页（ihchina.cn/project_details/12902）",
+      "source_url": "https://www.ihchina.cn/project_details/12902/",
+      "review_status": "reviewed"
+    },
+    {
+      "review_status": "reviewed",
+      "scene_id": "scene-gz-street",
+      "id": "qa-gz-street-1",
+      "question": "永庆坊微改造是什么时候开始的？",
+      "keywords": [
+        "微改造",
+        "2016",
+        "永庆坊",
+        "试点",
+        "荔湾",
+        "什么时候"
+      ],
+      "answer": "2016 年起，广州荔湾区把恩宁路永庆坊作为旧城微改造项目分两期推进。",
+      "source": "人民网《广州永庆坊：微改造让历史文化街区「活起来」》（2020-07-17）",
+      "source_url": "http://culture.people.com.cn/n1/2020/0717/c1013-31787368.html"
+    },
+    {
+      "review_status": "reviewed",
+      "scene_id": "scene-gz-street",
+      "id": "qa-gz-street-2",
+      "question": "什么叫「修旧如旧」？",
+      "keywords": [
+        "修旧如旧",
+        "新旧融合",
+        "推倒重建",
+        "绣花",
+        "一期",
+        "二期",
+        "旧瓶装新酒",
+        "新瓶装旧酒",
+        "什么意思"
+      ],
+      "answer": "「修旧如旧，新旧融合」是永庆坊微改造的理念用语。一期把老建筑保留下来、恢复原貌，用「绣花」功夫修缮、保持街巷肌理，官方比作「旧瓶装新酒」；二期则是拆平后全新建设，用岭南传统建筑材料与工艺营造传统岭南园林，官方比作「新瓶装旧酒」。",
+      "source": "中新社《广州永庆坊：微改造让历史文化街区「活起来」》（2020-07-16 首发，人民网 2020-07-17 转载，引荔湾区住房和建设局调研员江伟辉语）",
+      "source_url": "https://www.chinanews.com.cn/cul/2020/07-16/9240233.shtml"
+    },
+    {
+      "review_status": "reviewed",
+      "scene_id": "scene-gz-street",
+      "id": "qa-gz-street-3",
+      "question": "改造后的恩宁路上有哪些「新与旧」同框的景象？",
+      "keywords": [
+        "新",
+        "旧",
+        "同框",
+        "老铺",
+        "咖啡",
+        "文创",
+        "展览"
+      ],
+      "answer": "咖啡店、文创店与非遗展示角开进骑楼古巷，与老铺同在一条柱廊下营业；新招牌与旧瓦当、老骑楼与新店铺同在一条街上。",
+      "source": "本场景叙事《街区变迁：恩宁路的新与旧》",
+      "source_url": "http://culture.people.com.cn/n1/2020/0717/c1013-31787368.html"
+    },
+    {
+      "review_status": "reviewed",
+      "scene_id": "scene-gz-street",
+      "id": "qa-gz-street-4",
+      "question": "年轻店主在恩宁路做什么？",
+      "keywords": [
+        "年轻",
+        "店主",
+        "工作室",
+        "咖啡",
+        "老宅",
+        "文创"
+      ],
+      "answer": "一些年轻店主把文创店和咖啡店开进骑楼古巷，与做街坊生意多年的老铺在同一条柱廊下营业。",
+      "source": "本场景叙事《街区变迁：恩宁路的新与旧》",
+      "source_url": "http://culture.people.com.cn/n1/2020/0717/c1013-31787368.html"
+    },
+    {
+      "review_status": "reviewed",
+      "scene_id": "scene-gz-street",
+      "id": "qa-gz-street-5",
+      "question": "街区变迁是把旧街拆掉重建吗？",
+      "keywords": [
+        "拆",
+        "重建",
+        "拆平",
+        "全新建设",
+        "二期",
+        "旧瓶装新酒",
+        "新瓶装旧酒",
+        "变迁",
+        "保留",
+        "更新"
+      ],
+      "answer": "要分两期看。一期不是：报道明确「摒弃『推倒重建』的模式」，走的是「修旧如旧，新旧融合」的微改造路线，老建筑保留下来、恢复原貌。二期是：二期建筑为拆平后全新建设，用岭南传统建筑材料与工艺营造传统岭南园林，官方比作「新瓶装旧酒」。",
+      "source": "中新社《广州永庆坊：微改造让历史文化街区「活起来」》（2020-07-16 首发，人民网 2020-07-17 转载，引荔湾区住房和建设局调研员江伟辉语）",
+      "source_url": "https://www.chinanews.com.cn/cul/2020/07-16/9240233.shtml"
+    }
+  ]
+}

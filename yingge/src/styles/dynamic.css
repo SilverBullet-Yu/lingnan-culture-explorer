@@ -1,0 +1,381 @@
+/* 英歌原型 · 动态层（dynamic.css，2026-11-08，末位加载）
+   设计意图：在 guochao.css 的静态海报语言之上补一层「鼓点 · 追光 · 墨动」。
+   只增加动效与微交互，不改文案、状态模型与 a11y 语义；
+  §13「排布收口层」为例外：作为末位加载层承载响应式栅格降级与版式修复；
+   e2e 依赖的 class / id / 文本全部保持原样。
+
+   技法来源（CodePen 2026 趋势精选，编号与链接见 docs/素材与授权/素材来源.md「动态层参考」）：
+     · 顶部无限字幕带 —— double-direction marquee 思路（纯 CSS 位移循环）
+     · 幕数字视差 —— animation-timeline: view() 滚动驱动（不隐藏任何内容）
+     · 光标追光 —— fluid cards / spotlight 思路（CSS 变量 + rAF，不重排）
+     · 书脊滚动进度 —— Scroll Progress on Edges 思路（接到既有朱砂书脊）
+     · 落章、描金线、按钮流光 —— 微交互补齐
+
+   闸门：prefers-reduced-motion 与页眉「减少动效」都只压平动画、不隐藏内容；
+   常驻动画只碰 transform / opacity / background-position / filter。 */
+
+:root{--sp:0%}
+
+/* ═══════════ 1. 顶部鼓点带：朱砂底金字的慢速字幕 ═══════════
+   两组同内容并排（各占 100vw），轨道整体位移 -50% 实现无缝循环；
+   鼠标悬停暂停，便于阅读；减少动效时停在第一组，内容仍完整可读。
+   与左侧朱砂书脊同色，宽屏下书脊压在其上不产生断口。 */
+.beat-band{
+  position:relative;z-index:4;display:flex;align-items:center;height:34px;
+  overflow:hidden;background:var(--red);border-bottom:2px solid var(--ink);
+  color:#fbeed6;font-size:11px;letter-spacing:.3em;
+}
+.beat-band::before,.beat-band::after{content:"";position:absolute;top:0;bottom:0;width:88px;z-index:2;pointer-events:none}
+.beat-band::before{left:0;background:linear-gradient(90deg,var(--red),rgba(207,58,28,0))}
+.beat-band::after{right:0;background:linear-gradient(270deg,var(--red),rgba(207,58,28,0))}
+.beat-track{display:flex;flex:none;align-items:center;width:max-content;animation:beat-run 74s linear infinite}
+.beat-band:hover .beat-track{animation-play-state:paused}
+.beat-group{display:flex;flex:none;align-items:center;justify-content:space-around;gap:30px;min-width:100vw;padding:0 16px}
+.beat-group span{white-space:nowrap}
+.beat-group i{font-style:normal;color:var(--gold);font-size:9px;letter-spacing:0;transform:translateY(-1px)}
+@keyframes beat-run{to{transform:translateX(-50%)}}
+/* 宽屏有朱砂书脊（44px）：字幕带内容从书脊右侧起步，减少动效时首句不被截断 */
+@media(min-width:1440px){.beat-band{padding-left:44px}}
+
+/* ═══════════ 2. 海报底色呼吸：朱砂幕布上的慢速扫光 ═══════════ */
+.poster-band{
+  background-image:linear-gradient(115deg,rgba(255,236,196,0) 12%,rgba(255,236,196,.16) 34%,rgba(255,236,196,0) 52%,rgba(38,25,13,.12) 100%);
+  background-size:220% 100%;background-repeat:no-repeat;
+  animation:band-sheen 26s ease-in-out infinite;
+}
+@keyframes band-sheen{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+
+/* ═══════════ 3. 标题描金线：入场时从左生长 ═══════════ */
+.poster-band-main h1,.detail-hero-body h1{position:relative;width:fit-content;max-width:100%;padding-bottom:11px}
+.poster-band-main h1::after,.detail-hero-body h1::after{
+  content:"";position:absolute;left:0;bottom:0;width:100%;height:4px;
+  background:linear-gradient(90deg,var(--gold),rgba(224,166,62,.08));
+  transform:scaleX(1);transform-origin:left;
+  animation:rule-draw 1.05s .28s var(--ease-out-soft) both;
+}
+@keyframes rule-draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* ═══════════ 4. 按钮流光：悬停时一道暖光扫过 ═══════════ */
+.btn{position:relative;overflow:hidden}
+.btn::after{
+  content:"";position:absolute;top:-30%;bottom:-30%;left:-45%;width:32%;z-index:1;
+  background:linear-gradient(100deg,rgba(255,247,225,0),rgba(255,247,225,.34),rgba(255,247,225,0));
+  transform:translateX(-160%) skewX(-18deg);pointer-events:none;
+  transition:transform .62s var(--ease-out-soft);
+}
+.btn:hover::after{transform:translateX(560%) skewX(-18deg)}
+.btn.secondary::after{background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,236,196,.5),rgba(255,255,255,0))}
+
+/* ═══════════ 5. 光标追光：卡片金晕 + 地图戏台追光 ═══════════
+   JS 只写 --mx/--my（百分比），高光由合成层绘制，不触发重排。 */
+.dyn-glow{position:relative;isolation:isolate}
+.dyn-glow::after{
+  content:"";position:absolute;inset:-2px;z-index:-1;border-radius:inherit;pointer-events:none;
+  background:radial-gradient(220px circle at var(--mx,50%) var(--my,0%),rgba(224,166,62,.2),rgba(224,166,62,0) 72%);
+  opacity:0;transition:opacity .28s ease;
+}
+.dyn-glow:hover::after{opacity:1}
+
+#replica-map::after{
+  content:"";position:absolute;left:0;top:0;width:660px;height:660px;z-index:1;border-radius:50%;
+  pointer-events:none;will-change:transform;
+  background:radial-gradient(closest-side,rgba(255,214,138,.5),rgba(255,214,138,0));
+  transform:translate3d(calc(var(--sx,330px) - 330px),calc(var(--sy,240px) - 330px),0);
+  opacity:0;transition:opacity .45s ease;
+}
+#replica-map.is-lit::after{opacity:1}
+
+/* ═══════════ 6. 幕数字视差：滚动时描边大字轻移（纯装饰，aria-hidden） ═══════════
+   用独立的 translate 属性，不与 hover / 入场动画的 transform 抢值；
+   不支持 view() 时间线的浏览器保持静止，内容与版式不受影响。 */
+@supports (animation-timeline:view()){
+  .act-no{animation:act-drift linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+  @keyframes act-drift{from{translate:0 8px}to{translate:0 -8px}}
+}
+
+/* ═══════════ 7. 书脊滚动进度：右侧 4px 鎏金线随阅读填充 ═══════════ */
+@media(min-width:1440px){
+  body::after{
+    background-image:linear-gradient(var(--gold),var(--gold));
+    background-repeat:no-repeat;background-position:right top;
+    background-size:4px var(--sp,0%);
+    box-shadow:inset -2px 0 0 rgba(251,238,214,.18);
+  }
+}
+#readbar{height:5px;box-shadow:0 0 14px rgba(224,166,62,.5)}
+
+/* ═══════════ 8. 地图海流：虚线缓慢流动（纯装饰） ═══════════ */
+.atlas-wave{stroke-dasharray:24 15;animation:sea-flow 11s linear infinite}
+@keyframes sea-flow{to{stroke-dashoffset:-39}}
+
+/* ═══════════ 9. 落章与章节墨标 ═══════════ */
+.result-chapter.done::after{
+  width:22px;height:22px;margin-top:-11px;right:14px;
+  box-shadow:inset 0 0 0 2px rgba(251,238,214,.6),2px 2px 0 rgba(38,25,13,.16);
+  animation:seal-stamp .62s cubic-bezier(.2,1.4,.4,1) both;
+  animation-delay:calc(.16s + var(--i,0) * .085s);
+}
+@keyframes seal-stamp{
+  0%{opacity:0;transform:rotate(-18deg) scale(2.1)}
+  55%{opacity:1;transform:rotate(-5deg) scale(.92)}
+  78%{transform:rotate(-9deg) scale(1.04)}
+  100%{opacity:1;transform:rotate(-8deg) scale(1)}
+}
+.chapter-row{transition:background .15s ease,box-shadow .2s ease,transform .2s ease}
+.chapter-row:hover{box-shadow:inset 6px 0 0 var(--red);transform:translateX(2px)}
+
+/* ═══════════ 10. 导航下划线与展墙/作品微动 ═══════════ */
+header > nav a{position:relative}
+header > nav a::after{
+  content:"";position:absolute;left:13px;right:13px;bottom:5px;height:2px;
+  background:var(--gold);transform:scaleX(0);transform-origin:left;
+  transition:transform .26s var(--ease-out-soft);
+}
+header > nav a:hover::after{transform:scaleX(1)}
+header > nav a[aria-current=page]::after{display:none}
+
+.wall-face:hover svg{transform:scale(1.055) rotate(-1.4deg)}
+.result-work:hover{box-shadow:8px 9px 0 rgba(38,25,13,.14)}
+
+/* ═══════════ 11. 窄屏收口（Web 屏幕端；打印线路已随 Web-only 收口移除） ═══════════ */
+@media(max-width:520px){
+  .beat-band{height:30px;font-size:10px;letter-spacing:.22em}
+  .beat-group{gap:18px;padding:0 12px}
+}
+
+/* ═══════════ 12. 减少动效：只压平，不隐藏 ═══════════ */
+@media(prefers-reduced-motion:reduce){
+  .poster-band,.atlas-wave,.result-chapter.done::after,.act-no,
+  .poster-band-main h1::after,.detail-hero-body h1::after{animation:none!important}
+  .beat-track{animation:none!important;transform:none;width:100%}
+  .beat-group{min-width:0;flex:1}
+  .beat-group:nth-child(2){display:none}
+  .dyn-glow::after,#replica-map::after{display:none}
+}
+body.reduced-motion .poster-band,
+body.reduced-motion .atlas-wave,
+body.reduced-motion .result-chapter.done::after,
+body.reduced-motion .act-no,
+body.reduced-motion .poster-band-main h1::after,
+body.reduced-motion .detail-hero-body h1::after{animation:none!important}
+body.reduced-motion .beat-track{animation:none!important;transform:none;width:100%}
+body.reduced-motion .beat-group{min-width:0;flex:1}
+body.reduced-motion .beat-group:nth-child(2){display:none}
+/* 减少动效 + 窄屏：只保留前四句，避免静态条被裁成半个词 */
+@media(prefers-reduced-motion:reduce) and (max-width:640px){
+  .beat-group>:nth-child(n+8){display:none}
+}
+@media(max-width:640px){
+  body.reduced-motion .beat-group>:nth-child(n+8){display:none}
+}
+body.reduced-motion .dyn-glow::after,body.reduced-motion #replica-map::after{display:none}
+body.reduced-motion .btn::after{display:none}
+
+/* ═══════════ 13. 排布收口层（2026-11-08，末位加载） ═══════════
+   起因一：guochao.css 末位加载，其普通栅格规则（.explore-layout / .mask-layout /
+     .wall-grid / .object-grid / .compare-grid / .formation-pair / .result-work-grid）
+   与 story.css:311/313/374 内 @media 的降级规则同特异性、后加载胜出，
+   导致 ≤1020px 栅格不降级：390px 探索页左列仅 30px、创作关画布被挤进 150px 列。
+   起因二：map.css:177 的裸 nav{order:3}（本意只作用于页眉导航）误伤同为 nav 的
+     .story-toc，把四章目录推到页底。
+   本层位于加载顺序最末，用 #app 前缀提升特异性统一收口；不改文案、状态与 a11y。
+   验证口径：390 / 768 / 1440 三视口 documentElement.scrollWidth <= clientWidth。 */
+
+/* 13.1 统一 sticky 偏移；裁剪装饰溢出；补齐触控目标 */
+:root{--header-h:72px}
+#app .knowledge-panel,#app .story-toc{top:calc(var(--header-h) + 14px)}
+#app .result-work{margin-top:14px}
+#app .review-q::before{font-size:44px;top:2px;opacity:.55;z-index:0}
+#app .review-q>*{position:relative;z-index:1}
+#app .mask-color,#app .mask-size{width:44px;height:44px;min-width:44px;min-height:44px}
+#app .mask-size{border-radius:5px}
+
+/* 13.2 P04：空态侧栏收成引导条，两列不再强制等高 */
+#app .explore-layout{align-items:start}
+#app .knowledge-panel:not(.open){display:block;min-height:0;opacity:1;padding:14px 16px}
+#app .knowledge-panel:not(.open) p{margin:0;text-align:left}
+
+/* 13.3 P03：幕数字从 104px 收到 72px，把首屏让给正文 */
+#app .act-head .act-no{font-size:clamp(48px,6vw,72px)}
+
+/* 13.4 P05：桌面两栏 + 回顾题两选项并排（:has 不支持时安全退回单列） */
+@media(min-width:1021px){
+  #app:has(.result-works)>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start}
+  #app:has(.result-works)>div>.crumb,
+  #app:has(.result-works)>div>.result-head,
+  #app:has(.result-works)>div>p.muted{grid-column:1/-1}
+  #app:has(.result-works)>div>section.card:nth-of-type(1),
+  #app:has(.result-works)>div>section.card:nth-of-type(2){grid-column:1}
+  #app:has(.result-works)>div>section.card:nth-of-type(3),
+  #app:has(.result-works)>div>section.card:nth-of-type(4){grid-column:2}
+  #app:has(.result-works)>div>section.card:nth-of-type(1),
+  #app:has(.result-works)>div>section.card:nth-of-type(3){grid-row:4}
+  #app:has(.result-works)>div>section.card:nth-of-type(2),
+  #app:has(.result-works)>div>section.card:nth-of-type(4){grid-row:5}
+}
+#app .review-options{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+/* 13.5 响应式栅格降级（P0） */
+@media(max-width:1020px){
+  #app .explore-layout{grid-template-columns:minmax(0,1fr)}
+  #app .knowledge-panel{position:static;top:auto}
+}
+@media(max-width:860px){
+  #app .story-layout{grid-template-columns:minmax(0,1fr)}
+  #app .story-toc{order:0}
+  #app .mask-layout{grid-template-columns:minmax(0,1fr)}
+  #app .mask-refs{grid-template-columns:repeat(3,minmax(0,1fr))}
+  #app .mask-canvas-wrap{order:-1}
+}
+@media(max-width:640px){
+  #app .wall-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #app .object-grid,#app .compare-grid,#app .formation-pair,#app .result-work-grid{grid-template-columns:minmax(0,1fr)}
+  #app .review-options{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:520px){
+  #app .story-toc{grid-template-columns:minmax(0,1fr);order:0}
+  #app .act-head{gap:12px}
+  #app .act-head .act-no{font-size:48px}
+  .beat-band{display:none}
+}
+
+/* 13.6 首次使用提示条：窄屏压成贴顶直角细条
+   （覆盖 storage-notice.js 后注入的同 id 样式，靠 body> 提高特异性） */
+@media(max-width:520px){
+  body > #yingge-storage-notice{margin:6px auto 0;padding:9px 12px;gap:8px;font-size:11.5px;border-radius:0;border-left-width:4px}
+  body > #yingge-storage-notice p{min-width:0;flex-basis:100%;line-height:1.5}
+  body > #yingge-storage-notice button{padding:6px 12px}
+}
+
+/* ═══════════ 14. P1 版式收口（2026-11-08，P01 / P02 / P06） ═══════════
+   承接 §13 的加载顺序优势，只做纯 CSS 排布调整，不改模板与业务逻辑。
+   对应排布诊断中的「P01 地图空区与右卡留白 / P02 身份框比例与层级 /
+   P06 信息密度低且国潮装饰断层」三项。 */
+
+/* 14.1 P01：右侧案例卡内容沿纵向分布 */
+#app .map-panel-chaoshan{display:flex;flex-direction:column}
+#app .map-panel-chaoshan > .btn{margin-top:auto}
+
+/* 14.2 P02：身份三框按内容量分配；身份说明降为脚注；收紧上下层级间距 */
+#app .detail-hero-body .facts{grid-template-columns:1.6fr .7fr .7fr}
+#app .detail-hero-body > p.muted{font-size:12px;opacity:.72;margin-top:-4px}
+#app .banner{margin:20px 0}
+#app .columns{margin-top:14px}
+@media(max-width:800px){
+  #app .detail-hero-body .facts{grid-template-columns:1fr 1fr}
+  #app .detail-hero-body .facts .fact:first-child{grid-column:1/-1}
+}
+
+/* 14.3 P06：桌面两栏 + 「册」字朱砂印 + 概况合并为横向统计带 */
+#app:has(#export-json) h1{display:flex;align-items:center;gap:14px}
+#app:has(#export-json) h1::after{
+  content:"册";flex:none;display:inline-grid;place-items:center;
+  width:38px;height:38px;background:var(--red);color:#fbeed6;
+  font-family:var(--font-brush);font-size:20px;border:2px solid var(--ink);
+  border-radius:4px;transform:rotate(-5deg);box-shadow:2px 2px 0 rgba(38,25,13,.2);
+}
+#app:has(#export-json) .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid var(--ink);border-radius:6px;overflow:hidden;background:var(--card)}
+#app:has(#export-json) .fact{border:0;border-right:2px solid var(--ink);border-radius:0;box-shadow:none;background:transparent;padding:10px 14px}
+#app:has(#export-json) .fact:last-child{border-right:0}
+@media(min-width:1021px){
+  #app:has(#export-json)>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start}
+  #app:has(#export-json)>div>h1,
+  #app:has(#export-json)>div>p.muted.small-note,
+  #app:has(#export-json)>div>.me-resume,
+  #app:has(#export-json)>div>.facts{grid-column:1/-1}
+  #app:has(#export-json)>div>section.card:nth-of-type(1){grid-column:1}
+  #app:has(#export-json)>div>section.card:nth-of-type(2){grid-column:2}
+  #app:has(#export-json)>div>section.card:nth-of-type(3){grid-column:1/-1}
+}
+@media(max-width:640px){
+  #app:has(#export-json) .facts{grid-template-columns:1fr}
+  #app:has(#export-json) .fact{border-right:0;border-bottom:2px solid var(--ink)}
+  #app:has(#export-json) .fact:last-child{border-bottom:0}
+}
+
+.save-bar{max-width:1124px;margin:0 auto;display:flex;align-items:center;gap:14px;min-height:38px;padding:8px 0;color:var(--muted-strong);font-size:11px;border-bottom:1px solid var(--hairline)}
+.save-bar>span:first-child{font-weight:700;letter-spacing:.18em;color:var(--red-deep)}
+.save-bar.save-failed{background:var(--gold-soft);padding:12px;flex-wrap:wrap}
+[hidden]{display:none!important}
+header > nav a{flex:1;white-space:nowrap}
+header{box-shadow:0 2px 0 rgba(38,25,13,.12);border-bottom:2px solid var(--red)}
+.brand-text{background:none;-webkit-text-fill-color:currentColor;color:#f2e7cf;animation:none}
+main{padding-top:30px}
+.chapter-toggle{display:none}
+#app .story-toc{gap:8px;width:100%;color:var(--ink)}
+#app .story-toc-row{flex-direction:row;align-items:center;gap:12px;padding:15px 14px;min-width:0;border:1px solid var(--hairline);box-shadow:none;color:var(--ink);background:var(--paper)}
+#app .story-toc-row.on{background:var(--red-soft);border-color:var(--red);color:var(--red-deep);box-shadow:inset 0 -3px var(--red)}
+#app .story-toc-row.on small{color:var(--red-deep)}
+#app .story-toc-row i{color:var(--muted-strong);background:var(--paper-deep);width:34px;height:34px}
+#app .story-toc-row.on i{background:var(--red-deep);color:var(--paper)}
+#app .story-toc-row small{display:block;margin-top:3px}
+#app .stage-nav{gap:0;padding:6px;background:var(--paper-deep);border-radius:6px;width:fit-content;margin:0 0 22px}
+#app .stage-pill{min-height:44px;padding:8px 20px;border:0;border-radius:3px;background:transparent;color:var(--muted-strong);box-shadow:none}
+#app .stage-pill.on{color:var(--paper);background:var(--ink)}
+#app .stage-pill.reached{color:var(--red-deep);text-decoration:underline;text-underline-offset:5px}
+button:disabled{cursor:default;opacity:.5}
+#app .story-main{padding:26px 28px;border-width:1px;box-shadow:4px 5px 0 rgba(38,25,13,.08)}
+#app .scene-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+#app .scene-tab{min-width:0;padding:12px;gap:8px;border:1px solid var(--hairline);color:var(--ink);box-shadow:none}
+#app .scene-tab.on{background:var(--red-soft);color:var(--red-deep);border-color:var(--red);box-shadow:inset 0 -3px var(--red)}
+#app .scene-tab.on small{color:var(--red-deep)}
+#app .scene-tab small{margin-left:auto;white-space:nowrap;font-size:12px}
+#app .scene-tab.on .tab-num{background:var(--red-deep);color:var(--paper);border-color:var(--red-deep)}
+#app .knowledge-panel{border-width:1px;padding:22px;box-shadow:4px 5px 0 rgba(38,25,13,.08)}
+#app .knowledge-panel.open{transform:none;border-color:var(--red);box-shadow:4px 5px 0 rgba(158,36,16,.12)}
+#app .knowledge-panel>*{animation:none}
+#app .knowledge-panel h3{font-size:22px;line-height:1.4}
+#app .knowledge-text{font-size:15px;line-height:1.9}
+.knowledge-detail{margin:16px 0 10px}
+.detail-viewport{background:var(--paper-deep);border:1px solid var(--hairline);border-radius:4px;overflow:hidden;height:190px}
+.detail-viewport svg{width:100%;height:100%;display:block}
+.knowledge-detail figcaption{font-size:12px;line-height:1.7;color:var(--muted-strong);margin-top:8px}
+.detail-controls{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.mini-btn,[data-detail],[data-compare-view]{min-height:44px}
+.detail-controls [aria-pressed=true]{background:var(--ink);color:var(--paper)}
+#app .wall-face.selected,#app .object-card.selected{border-color:var(--red);outline:2px solid var(--red);outline-offset:3px}
+#app .wall-face{padding:16px 12px;background:var(--paper);border:1px solid var(--hairline);box-shadow:none}
+#app .wall-face small{display:block;margin-top:5px}
+#app .compare-ref svg{height:240px;max-width:100%;border:0;background:var(--paper-deep)}
+.compare-item>svg{display:block;width:100%;height:240px;background:var(--paper-deep)}
+.explore-continue{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 0 0;margin-top:28px;border-top:1px solid var(--hairline)}
+.explore-continue p{margin:4px 0 0}
+.rhythm-point.input-mark{outline:3px solid var(--red-deep);outline-offset:5px}
+.feedback-card [data-feedback-work]{display:block;width:180px;max-width:100%;margin:12px auto}
+.mask-lightbox-card{max-height:85dvh;overflow:auto}
+.mask-lightbox-card img{display:block;max-width:100%;max-height:240px;object-fit:contain;margin:auto}
+.mask-lightbox-card [data-viewbox]{min-height:44px;padding:8px 12px;border:1px solid var(--hairline);border-radius:4px;background:var(--paper);color:var(--ink)}
+.mask-lightbox-card [data-viewbox][aria-pressed=true]{background:var(--ink);color:var(--paper)}
+.mask-lightbox-card .mask-ref-big svg{height:210px;width:100%;background:var(--paper-deep)}
+.feedback-card .result-work-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.feedback-card .result-work-grid figure{margin:0;padding:12px;background:var(--paper)}
+.feedback-card .result-work-grid svg{width:100%;height:auto;max-height:200px}
+@media(max-width:640px){.feedback-card .result-work-grid{grid-template-columns:1fr}}
+#app .card:hover{transform:none;box-shadow:var(--shadow-card)}
+#app .result-work-tools{gap:10px}
+#app .result-work-grid:has(>.result-work:only-child){grid-template-columns:minmax(0,1fr)}
+:focus-visible{outline:3px solid var(--indigo);outline-offset:4px}
+header :focus-visible{outline-color:var(--gold)}
+@media(min-width:1021px){#app .explore-layout{grid-template-columns:minmax(0,1fr) 350px}#app .knowledge-panel.open{max-height:calc(100dvh - var(--header-h) - 30px);overflow-y:auto;scrollbar-width:thin}.knowledge-actions{position:sticky;bottom:-22px;background:var(--card);padding:12px 0;margin-bottom:-12px}}
+@media(max-width:1180px){.save-bar{margin:0 28px}}
+@media(max-width:800px){header{gap:8px;padding:10px 16px}header > nav{order:0;width:auto;margin-left:auto}header > nav a{padding:8px 12px}.header-actions{margin-left:auto}.save-bar{margin:0 16px}#app .scene-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){
+  header{display:grid;grid-template-columns:1fr auto;min-height:0;gap:8px}
+  header > nav{grid-column:1;width:100%;margin:0;padding:2px}
+  header > nav a{font-size:12px;padding:6px 10px;min-height:44px}
+  .brand{grid-column:1/-1;font-size:16px}.brand b{width:30px;height:30px}
+  header .header-actions{grid-column:2;grid-row:2;gap:5px}header button{padding:6px 8px;font-size:11px}
+  #app .story-main{padding:18px 14px}
+  .chapter-toggle{display:flex;width:100%;align-items:center;justify-content:space-between;min-height:48px;padding:12px 14px;border:1px solid var(--hairline);border-radius:5px;background:var(--paper);color:var(--ink);font-size:13px;text-align:left}
+  #app .chapter-navigation:not(.expanded) .story-toc{display:none}
+  #app .chapter-navigation.expanded .story-toc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:8px}
+  #app .story-toc-row{padding:12px 8px;gap:7px}#app .story-toc-row b{font-size:12px}#app .story-toc-row small{font-size:10px}
+  #app .stage-pill{padding:8px 15px}
+  #app .scene-tab{font-size:12px;padding:10px 8px;gap:5px}#app .scene-tab .tab-num{width:24px;height:24px}
+  #app .knowledge-panel:not(.open){display:none}
+  #app .knowledge-panel.open{position:fixed;inset:auto 8px 8px;z-index:20;max-height:68dvh;overflow-y:auto;border:2px solid var(--red);border-radius:12px 12px 6px 6px;padding:20px;box-shadow:0 -12px 50px rgba(38,25,13,.22);overscroll-behavior:contain}
+  .knowledge-actions{position:sticky;bottom:-20px;background:var(--card);padding:12px 0;margin-bottom:-10px}
+  .explore-continue{align-items:stretch;flex-direction:column;gap:12px}
+  .save-bar{font-size:10px;gap:8px}.save-bar>span:first-child{display:none}
+  #app .wall-grid{gap:10px}#app .wall-face b{font-size:13px}
+}

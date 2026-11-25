@@ -1,0 +1,39 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+Thumbs.db
+test-results/
+playwright-report/
+# 本地备份留档（polish.css 等已随 git 历史留档，见提交 v0.4.0）
+backups/
+# 本轮视觉定稿的截图对比工作产物（结论已记 README）
+map-spike/page-*.png
+map-spike/page-baseline/
+# ZCode 会话本地目录
+.zcode/
+# 本地工作日志与工具产物（不入库）
+.workbuddy/
+.playwright-cli/
+.trae/
+skills-lock.json
+# 2026-11-15 审计留档（旧构建产物/回滚备份，仅存工作区，见 审计报告-20261115.md §2）
+_archive_20261116/
+# 资料区/验证/ 不忽略：历史验证留痕目录（含 20261117-客家卡文案/ 3 张 PNG）随仓库提交，与同级已跟踪验证目录保持一致
+素材归档/
+
+# 本轮视觉预览（可复现的源码与正式验收证据仍保留）
+/资料区/atlas-style-live-20261125/
+/资料区/atlas-style-preview-20261125/
+/资料区/home-map-only-20261125/
+/资料区/map-entry-live-20261125/
+/资料区/map-entry-preview-20261125/
+/资料区/ui-review-20261125/
+/资料区/github提交版/
+/资料区/ui-direction-preview.html
+/资料区/ui-preview-desktop.png
+/资料区/ui-preview-mobile.png
+
+# 构建快照与 Playwright 运行产物（正式验收证据目录本身不忽略）
+资料区/验证/20261125-正式首页接入/build-*/
+资料区/验证/20261125-正式首页接入/runs/

@@ -1,0 +1,30 @@
+/* 跟读录音与音频播放（F-06/F-07/F-12）样式，类名前缀 rec- 避免与 styles.css/map.css 冲突 */
+.rec-acts{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.rec-mini{border:1px solid var(--line);background:#ffffff;border-radius:2px;padding:4px 12px;font-size:.75rem;color:var(--muted)}
+.rec-mini:hover{color:var(--ink);border-color:var(--accent)}
+.rec-mini[disabled]{opacity:.55;cursor:default}
+.rec-practice{margin-top:14px;padding:13px 14px;border:1px dashed var(--line);border-radius:2px;background:#ffffff}
+.rec-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.rec-head b{font-size:15px}
+.rec-chip{flex:none;padding:2px 9px;border-radius:2px;background:#fbfcfa;color:#3b423c;font-size:.75rem}
+.rec-hint{margin:6px 0 0}
+.rec-row{display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap}
+.rec-btn{border:0;border-radius:2px;padding:8px 16px;background:var(--accent);color:var(--on-accent);font-weight:400}
+.rec-btn:hover{opacity:.88}
+.rec-btn.rec-on{background:#8F5D17}
+.rec-status{font-size:13px;color:var(--muted)}
+.rec-status.rec-live{color:#8F5D17;font-weight:bold}
+.rec-status.rec-err{color:#8F5D17}
+.rec-result{margin-top:10px}
+.rec-result audio{width:100%;max-width:340px;display:block}
+.rec-legal{margin:10px 0 0;font-size:12px}
+.rec-take-audio{display:none}
+/* 播放器用的 audio 只作数据源，界面由按钮与进度条承担 */
+.rec-src{display:none}
+.player .play[disabled]{opacity:.45;cursor:default;background:#8b8f96}
+/* .btn 自带 display:inline-block，会盖过 [hidden]，必须显式隐藏 */
+#takes-clear[hidden]{display:none}
+/* 页内提示：替代 alert（读屏可播报，且不打断操作） */
+.rec-toast{position:fixed;left:50%;transform:translateX(-50%);bottom:22px;z-index:30;max-width:min(520px,calc(100vw - 32px));padding:11px 18px;border-radius:2px;background:var(--ink);color:#fff;font-size:.8125rem;line-height:1.6;box-shadow:none;text-align:center}
+.rec-toast[hidden]{display:none}
+.reduced-motion .rec-toast{transition:none}

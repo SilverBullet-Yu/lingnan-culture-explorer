@@ -1,0 +1,96 @@
+/* 岭南 #yingge 全屏内嵌「英歌 · 上场之前」子应用。
+   英歌以 iframe 原样运行（国潮主题/存储/路由自持），岭南只负责全屏挂载与返回。
+   覆盖层不透明且高 z-index，盖住岭南顶栏(z2)与三维底图(z0)；顶栏/页脚另以 a11y 隐藏。 */
+body.is-yingge-embed header,
+body.is-yingge-embed footer { display: none !important; }
+body.is-yingge-embed #main-content { margin: 0; padding: 0; max-width: none; }
+body.is-yingge-embed .skip-link { display: none; }
+/* 关闭 #app>* 的 page-in 入场动画：其 transform 会让壳层成为 fixed 的包含块，
+   而壳层高度为 0（唯一子元素是脱离文档流的覆盖层），会把 inset:0 的覆盖层压成 0 高、
+   iframe 退回默认 150px。覆盖层自身用视口单位锁定整屏，不依赖任何祖先尺寸。 */
+body.is-yingge-embed #app > * { animation: none; }
+
+.yingge-embed {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  background:#ffffff;
+}
+.yingge-embed-bar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 42px;
+  padding: 0 16px;
+  background:var(--ink);color:#ffffff;
+  font-size:.8125rem;
+  box-shadow:none;
+}
+.yingge-embed-back {
+  color:#ffffff;
+  font-weight: 600;
+  border:1px solid rgba(255,255,255,.3);
+  padding: 5px 11px;
+  border-radius:2px;
+  white-space: nowrap;
+}
+.yingge-embed-back:hover { background:rgba(255,255,255,.14); }
+.yingge-embed-back:focus-visible { outline:2px solid transparent;outline-offset:2px;box-shadow:inset 0 0 0 2px #1d1e20,inset 0 0 0 4px #e6ff02; }
+.yingge-embed-title { opacity: .82; letter-spacing: .05em; }
+.yingge-embed-open { margin-left: auto; color:#ffffff; opacity: .8; font-size:.75rem; white-space: nowrap; }
+.yingge-embed-open:hover { opacity: 1; text-decoration: underline; }
+.yingge-embed-frame { flex: 1 1 auto; min-height: 0; width: 100%; border: 0; display: block; background:#ffffff; }
+
+@media (max-width: 640px) {
+  .yingge-embed-title { display: none; }
+  .yingge-embed-bar { gap: 10px; padding: 0 10px; }
+}
+
+/* 潮汕入口卡（地区页 / 文化圈页）：岭南纸墨风卡片 + 潮汕朱砂 CTA，引出内嵌英歌体验 */
+.yingge-entry { margin: 8px 0 26px; }
+.yingge-entry-card {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) 1fr;
+  overflow: hidden;
+  border-radius:2px;
+  background: var(--card, #ffffff);
+  box-shadow:none;
+  border: 1px solid var(--line, #eceee9);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.yingge-entry-card:hover { transform:none;box-shadow:none;border-color:var(--accent); }
+.yingge-entry-card:focus-visible { outline:2px solid transparent;outline-offset:2px;box-shadow:inset 0 0 0 2px #1d1e20,inset 0 0 0 4px #e6ff02; }
+.yingge-entry-cover {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  object-fit: cover;
+  background:#ffffff;
+  display: block;
+  border-right: 1px solid var(--line, #eceee9);
+}
+.yingge-entry-body { padding: 22px 24px; display: flex; flex-direction: column; gap: 8px; justify-content: center; }
+.yingge-entry-body h2 { margin: 4px 0 0; font-size:1.5rem; }
+.yingge-entry-body p { margin: 0; color: var(--muted, #5b615c); font-size:.875rem; }
+.yingge-entry-cta {
+  margin-top: 8px;
+  align-self: flex-start;
+  font-weight:400;letter-spacing:.04em;
+  color: #fff;
+  background: #245B4D;
+  padding: 9px 16px;
+  border-radius:2px;
+}
+.yingge-entry-card:hover .yingge-entry-cta { background: #1c463b; }
+@media (max-width: 640px) {
+  .yingge-entry-card { grid-template-columns: 1fr; }
+  .yingge-entry-cover { min-height: 160px; border-right: 0; border-bottom: 1px solid var(--line, #eceee9); }
+}
+
+

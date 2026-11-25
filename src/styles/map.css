@@ -1,0 +1,95 @@
+/* 粤港澳文化地图：保留三色分区，统一绘制立体地块与直立标识。 */
+.replica-atlas{background:radial-gradient(ellipse at 20% 15%,rgba(230,239,232,.9),transparent 45%),radial-gradient(ellipse at 80% 80%,rgba(238,242,238,.95),transparent 50%),#ffffff;color:#1a1d1a;border:1px solid var(--hairline);border-radius:2px;overflow:hidden}
+body:has(.replica-atlas){background:#ffffff}
+main:has(.replica-atlas){max-width:1288px;padding-top:28px}
+.replica-header{text-align:center;padding:30px 20px 20px}
+.atlas-eyebrow{display:block;font-size:12px;letter-spacing:3px;color:#5b615c;margin-bottom:7px}
+.replica-header h1{font-family:var(--font-display);font-size:clamp(30px,4.2vw,48px);letter-spacing:5px;line-height:1.3;margin:0}
+.replica-dot{color:#245b4d;letter-spacing:0}
+.replica-sub{display:flex;justify-content:center;gap:17px;flex-wrap:wrap;font-size:13px;margin-top:17px}
+.replica-tag{display:inline-flex;align-items:center;gap:6px;font-weight:700}
+.replica-tag i{display:block;width:10px;height:10px;border-radius:2px;box-shadow:none}
+.atlas-introduction{margin:13px 0 0;font-size:13px;color:#5b615c}
+.atlas-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);background:#ffffffbd}
+.atlas-view-label{display:flex;align-items:center;gap:8px;font-size:13px;white-space:nowrap}
+.atlas-view-label>i{width:7px;height:7px;background:#245b4d;border-radius:50%;box-shadow:none}
+.atlas-view-label small{color:#5b615c;font-size:11px;margin-left:8px}
+.atlas-controls{display:flex;align-items:center;gap:5px}
+.atlas-controls button{border:1px solid #eceee9;background:#ffffff;color:#3b423c;border-radius:2px;min-width:34px;min-height:34px;padding:4px 9px;font-size:13px;line-height:1.6;box-shadow:none}
+.atlas-controls button:hover:not(:disabled){background:#fbfcfa;border-color:var(--accent)}
+.atlas-controls button:disabled{opacity:.35;cursor:default}
+.atlas-controls button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.atlas-controls output{font-size:11px;min-width:40px;text-align:center;color:#5b615c;font-variant-numeric:tabular-nums}
+.control-divider{height:18px;width:1px;background:#eceee9;margin:0 4px}
+.replica-wrap{position:relative}
+#replica-map{position:relative;width:100%;height:clamp(570px,67vh,740px);overflow:hidden;background:radial-gradient(ellipse at 50% 62%,#ecf2e58c,transparent 66%)}
+.atlas-svg{display:block;width:100%;height:100%;overflow:visible}
+.atlas-surface{stroke:#ffffff;stroke-width:1.4;vector-effect:non-scaling-stroke;transition:filter .16s,stroke .16s}
+.atlas-region{cursor:pointer;outline:none}
+.atlas-region:hover .atlas-surface{filter:brightness(1.07);stroke:#ffffff;stroke-width:2.3}
+.atlas-region:focus-visible .atlas-surface{stroke:#245b4d;stroke-width:3;filter:brightness(1.08)}
+.atlas-unavailable{cursor:default}.atlas-unavailable:hover .atlas-surface{filter:none;stroke-width:1.4}
+.atlas-city-label{font-size:12px;text-anchor:middle;fill:#604d37;stroke:#fff1d9e6;stroke-width:2.6;paint-order:stroke fill;font-weight:500}
+.atlas-unavailable .atlas-city-label,.atlas-city-label.is-unavailable{fill:#565b53}
+.atlas-sea-label{font-family:var(--font-display);font-size:25px;letter-spacing:14px;fill:#5b615c}
+.atlas-wave{fill:none;stroke:#afcabc;stroke-width:2.2;stroke-linecap:round}
+.atlas-compass{font-size:12px;fill:#6f7259}
+#replica-stickers{position:absolute;inset:0;pointer-events:none;z-index:3}
+.replica-sticker{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:7px;pointer-events:auto;transition:transform .2s;line-height:1}
+.replica-sticker .badge{width:48px;height:48px;border-radius:50%;border:2.5px solid var(--sc);background:#ffffff;display:grid;place-items:center;overflow:hidden;box-shadow:none}
+.replica-sticker .badge img{display:block;width:100%;height:100%;object-fit:cover}
+.replica-sticker:hover{transform:translate(-50%,-50%) translateY(-5px) scale(1.08);z-index:8}
+.sticker-card{position:absolute;left:0;top:0;display:none;width:200px;padding:10px 12px;border-radius:2px;background:#ffffff;border:0;box-shadow:none;z-index:6;pointer-events:none;line-height:1.5}
+.sticker-card.on{display:block}
+.sticker-card b{display:inline-block;font-size:14px;margin-right:6px;color:#3b423c}
+.sticker-card small{font-size:10px;font-weight:700;color:color-mix(in srgb,var(--sc,#1c463b) 55%,#1a1d1a)}
+.sticker-card p{margin:6px 0 0;font-size:12px;color:#5b615c}
+.atlas-region-pin{position:absolute;transform:translate(-50%,-50%);display:flex;gap:9px;align-items:center;pointer-events:auto;width:163px;min-height:70px;padding:7px 10px 7px 6px;border:1.5px solid var(--pin-color);border-radius:2px;background:#ffffff;box-shadow:none;line-height:1.3;transition:background .2s,box-shadow .2s}
+.atlas-region-pin:hover{background:white;box-shadow:none}
+.territory-art{display:block;flex:none;width:37px;height:46px}.territory-art svg{display:block;width:100%;height:100%}
+.atlas-region-pin b{display:block;font-family:var(--font-display);font-size:21px;letter-spacing:2px;color:#3b423c}
+.atlas-region-pin small{display:block;font-size:9px;color:#6f6b56;margin-top:3px;white-space:nowrap}
+.atlas-region-pin>i{font-style:normal;margin-left:auto;color:#66755f;font-size:12px}
+.atlas-hover-label{position:absolute;left:22px;top:17px;padding:7px 12px;background:#ffffffd9;border:1px solid var(--hairline);border-radius:2px;color:#5b615c;font-size:.6875rem;pointer-events:none;z-index:2}
+/* 图例改为地图下方的横排条：不再压住地图（3D 沙盘与 SVG 地图通用） */
+.replica-legend{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:0;padding:12px 20px;background:#ffffffb3;border-top:1px solid var(--hairline)}
+.replica-legend h3{font-family:var(--font-display);font-size:1rem;letter-spacing:2px;margin:0;color:#3b423c;flex:none}
+.replica-legend-row{display:inline-flex;align-items:center;gap:7px;margin:0;font-size:.8125rem;min-height:28px;padding:0 12px;border-radius:2px;border:1px solid var(--hairline);background:#ffffff}
+.replica-legend-row:hover{color:#1c463b}
+.replica-legend-row i,.legend-territories i,.legend-muted i{display:inline-block;flex:none;width:11px;height:11px;border-radius:2px}
+.replica-legend-row small{font-size:10px;color:#5b615c;margin-left:auto}
+.legend-territories{display:flex;gap:10px;border:0;margin:0;padding:0;font-size:13px}
+.legend-territories a{display:inline-flex;align-items:center;gap:5px;min-height:28px;padding:0 12px;border-radius:2px;border:1px solid var(--hairline);background:#ffffff}
+.legend-muted{display:flex;align-items:center;gap:6px;font-size:11px;color:#5b615c;margin:0 0 0 auto}
+.replica-footer{margin:0;padding:16px 18px;text-align:center;background:#ffffff6b;border-top:1px solid var(--hairline);color:#5b615c;font-size:11px;line-height:1.8}
+:focus-visible{outline:2px solid transparent;outline-offset:2px;box-shadow:inset 0 0 0 2px #1d1e20,inset 0 0 0 4px #e6ff02}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link{position:fixed;left:12px;top:-70px;z-index:20;padding:10px 16px;background:#1a1d1a;color:#fff;border-radius:2px}.skip-link:focus{top:8px}
+/* 跳过链接的落点：主内容区用 tabindex="-1" 接收焦点，但不给整块页面加描边 */
+#main-content:focus,#main-content:focus-visible{outline:none}
+header{z-index:10}nav a[aria-current=page]{color:var(--ink);font-weight:700}
+.culture-overview{--accent:#B4442F}.culture-overview h1{font-family:var(--font-display);font-size:2.625rem;margin:0}.culture-overview .tag{background:color-mix(in srgb,var(--accent) 12%,#fbfcfa);color:#3b423c}.culture-overview .culture-photo img{display:block;width:100%;height:270px;object-fit:cover;border-radius:2px}.culture-photo{margin:0}.culture-photo figcaption{font-size:12px;color:var(--muted);margin-top:8px}.culture-overview h2{font-size:1.5rem}.culture-topic-row{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0 16px}.culture-topic-row button{border:1px solid var(--line);border-radius:2px;background:var(--card);padding:8px 14px}.culture-topic-row button[aria-pressed=true]{background:var(--ink);color:white}.culture-keywords{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.culture-keywords span{padding:4px 12px;border-radius:2px;background:var(--plate-bg);font-size:.8125rem}.culture-empty{border:1px dashed var(--line);border-radius:2px;padding:20px;color:var(--muted)}
+.region-cover-image{display:block;width:100%;height:140px;object-fit:cover;border-radius:2px;margin-bottom:14px}
+.region-overview h1{font-family:var(--font-display);font-size:2.75rem;margin:10px 0 18px}.region-overview .columns{margin:0 0 30px}.region-overview .culture-photo img{display:block;width:100%;height:300px;object-fit:cover;border-radius:2px}.region-overview h2{font-size:24px}.region-coming-soon{padding:26px;border:0;background:var(--card);border-radius:2px;margin-top:24px;box-shadow:none}.region-coming-soon p{color:var(--muted);font-size:14px;margin:8px 0 18px}.region-coming-soon h2{margin:0}
+@media(max-width:860px){.atlas-toolbar{padding:12px 16px;flex-wrap:wrap;gap:9px}.atlas-controls{margin-left:auto}.atlas-view-label small{margin-left:4px}.replica-legend{gap:9px;padding:11px 14px}.replica-legend h3{font-size:1rem}.legend-muted{margin-left:0}.replica-legend-row small{display:none}.replica-header h1{font-size:2.125rem;letter-spacing:.08em}.replica-sub{gap:12px}#replica-map{height:540px}.replica-sticker .badge{width:42px;height:42px}.atlas-region-pin{width:143px;min-height:64px;gap:6px;padding:5px}.territory-art{width:31px;height:40px}.atlas-region-pin b{font-size:20px}.atlas-region-pin small{font-size:8px}}
+@media(max-width:800px){header{height:auto;min-height:70px;flex-wrap:wrap;padding:12px 16px;gap:12px}nav{display:flex;order:3;width:100%;justify-content:space-between;gap:8px;font-size:13px}header button{font-size:12px}main:has(.replica-atlas){padding:20px 10px 50px}.replica-header{padding:24px 12px 18px}.atlas-introduction{max-width:400px;margin:12px auto 0}.atlas-city-label{font-size:13px}.replica-footer{font-size:10px}.region-overview h1{font-size:1.75rem}}
+@media(max-width:520px){.replica-atlas{border-radius:2px}.replica-header h1{font-size:1.8125rem;letter-spacing:.06em}.atlas-eyebrow{font-size:10px}.replica-sub{gap:8px 12px;font-size:11px}.atlas-introduction{font-size:11px;line-height:1.9;max-width:270px}.atlas-toolbar{padding:11px 12px}.atlas-view-label{width:100%;font-size:12px}.atlas-view-label small{margin-left:auto;font-size:9px}.atlas-controls{width:100%;margin:0;justify-content:space-between;gap:3px}.atlas-controls button{min-width:30px;min-height:34px;padding:3px 7px;font-size:.6875rem}.atlas-controls output{min-width:32px;font-size:10px}.control-divider{margin:0 1px}#replica-map{height:490px}.atlas-hover-label{left:12px;top:14px;font-size:.625rem;padding:6px 9px}.replica-sticker{gap:5px}.replica-sticker .badge{width:35px;height:35px;border-width:2px;box-shadow:none}.atlas-region-pin{width:133px;min-height:62px}.replica-legend{padding:10px 12px;font-size:11px;gap:7px}.replica-legend-row{font-size:.75rem;min-height:26px;padding:0 10px}.replica-legend h3{font-size:1rem}.region-overview .culture-photo img{height:220px}.region-cover-image{height:160px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+/* F-02：地图加载失败时叠加在 #replica-map 内的等价列表降级视图。
+   定位依据：#replica-map 自身 position:relative 且 height:clamp(570px,67vh,740px)（≤860px 为 540px，≤520px 为 490px），
+   inset:0 只占舞台区域，工具栏是舞台的兄弟节点，不会被压住；容器 overflow:auto 兜住内容超高。 */
+.atlas-fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:2px;padding:24px;overflow:auto;overscroll-behavior:contain;text-align:center;border-radius:2px;box-shadow:none}
+.atlas-fallback>*{flex:none}
+/* 空间足够时上下 auto 外边距居中，内容超高时自动归零，保证顶部内容不被 flex 居中裁掉、可滚动到底 */
+.atlas-fallback>:first-child{margin-top:auto}
+.atlas-fallback>:last-child{margin-bottom:auto}
+.atlas-fallback-note{margin:0 0 12px;padding:9px 14px;border:1px dashed var(--line);border-radius:2px;color:var(--muted);font-size:13px;background:#ffffff}
+.atlas-fallback h3{margin:0 0 8px;font-family:var(--font-display);font-size:1.1875rem;letter-spacing:3px;color:#3b423c}
+.atlas-fallback .replica-legend-row{width:min(260px,100%);min-height:30px;margin:0;padding:4px 10px;border:1px solid var(--hairline);border-radius:2px;background:#ffffff;font-size:.8125rem}
+.atlas-fallback .replica-legend-row small{color:#5b615c}
+.atlas-fallback .legend-muted{margin:8px 0 0}
+.atlas-fallback .btn{margin-top:16px;font-size:13px}
+/* 降级后视角控件无效：标签灯变灰；图例内容已并入列表，隐藏桌面悬浮图例以免与列表重叠 */
+.atlas-fallback-active .atlas-view-label>i{background:#b9c0b8;box-shadow:none}
+.atlas-fallback-active .replica-legend{display:none}
+@media(max-width:520px){.atlas-fallback{padding:16px 12px}.atlas-fallback-note{font-size:11px;padding:8px 10px;margin-bottom:10px}.atlas-fallback h3{font-size:1.0625rem;margin-bottom:6px}.atlas-fallback .replica-legend-row{min-height:28px;font-size:.75rem}.atlas-fallback .btn{margin-top:12px;font-size:12px}}

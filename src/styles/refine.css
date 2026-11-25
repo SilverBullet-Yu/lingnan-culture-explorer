@@ -1,0 +1,167 @@
+/* 岭南主应用视觉收敛层：只覆盖共享组件，不触碰英歌子应用。 */
+:root{
+  --bg:#f5f4ef;
+  --paper:#fffdf8;
+  --paper-deep:#f1f2ec;
+  --card:#fffdf9;
+  --plate-bg:#eff3ed;
+  --ink:#1d2b25;
+  --ink-soft:#405149;
+  --muted:#66736b;
+  --muted-strong:#405149;
+  --line:#e2e0d7;
+  --line-strong:#b9b9aa;
+  --hairline:#deded5;
+  --accent:#216653;
+  --accent-deep:#174b3d;
+  --on-accent:#fffdf8;
+  --jade:#216653;
+  --jade-soft:#edf3ed;
+  --peach:#f2e4d8;
+  --r-card:14px;
+  --r-btn:8px;
+  --r-tag:999px;
+  --shadow-card:0 10px 28px rgba(42,55,45,.06);
+  --shadow-lift:0 16px 32px rgba(42,55,45,.11);
+}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--ink);font-weight:400;letter-spacing:.01em}
+body>header{height:78px;padding:0 clamp(20px,4vw,64px);gap:clamp(8px,1.1vw,16px);background:rgba(255,253,248,.9);border-bottom:1px solid var(--hairline);box-shadow:0 4px 18px rgba(42,55,45,.04);backdrop-filter:blur(18px) saturate(1.08)}
+.brand{gap:10px;font-weight:800;letter-spacing:.1em}
+.brand b{width:38px;height:38px;border-radius:10px;background:var(--accent);box-shadow:0 5px 12px rgba(33,102,83,.18)}
+body>header nav{gap:4px;font-weight:500}
+nav a{padding:9px clamp(6px,1vw,13px);border-radius:8px;white-space:nowrap}
+nav a:hover{background:var(--jade-soft)}
+nav a[aria-current=page]{background:var(--jade-soft);color:var(--accent-deep)}
+nav a::after{inset-inline:clamp(6px,1vw,13px);bottom:3px;height:2px;border-radius:999px}
+body>header button{white-space:nowrap;border-color:var(--line);border-radius:8px;background:var(--card);padding:8px 13px}
+body:has(.replica-atlas){background:var(--bg)}
+body>main{max-width:1120px;padding:clamp(26px,4vw,50px) 28px 72px}
+body>main:has(.nb-spread){padding-top:30px}
+body>main:has(.replica-atlas){max-width:1320px}
+body.is-map-entry .atlas3d-host,html.atlas3d-on body.is-map-entry .atlas3d-where{display:none}
+main h1,main h2,main h3,.head h2,.banner h2,.map-selection h2,.scene-cover h1,.home-sample-body h2,.photo-story h3{letter-spacing:.025em}
+main h1{font-weight:650}
+.head h1{margin:8px 0 0;font-size:clamp(1.9rem,4vw,2.65rem)}
+.head p{margin:6px 0 0;max-width:64ch;line-height:1.65}
+.card .head{margin-top:0}
+.head{margin:42px 0 20px}
+.head h2{font-weight:650}
+.eyebrow{letter-spacing:.2em;font-weight:750}
+.crumb{margin-bottom:20px;color:var(--muted)}
+.crumb a{text-decoration-color:rgba(33,102,83,.38)}
+.grid{gap:24px}
+.card,.home-sample,.photo-story,.map-selection,.region-coming-soon{border:1px solid var(--line);border-radius:var(--r-card);background:var(--card);box-shadow:var(--shadow-card)}
+.card{padding:24px}
+a.card,.region-card,.photo-story{transition:transform .22s var(--ease-out-soft),box-shadow .22s ease,border-color .22s ease}
+a.card:hover,.region-card:hover,.photo-story:hover{transform:none;border-color:rgba(33,102,83,.42);box-shadow:var(--shadow-lift)}
+.card h3{font-weight:650}
+.tag{padding:5px 10px;border-radius:var(--r-tag);background:var(--jade-soft);color:var(--accent-deep);font-weight:650;letter-spacing:.05em}
+.btn{border-radius:var(--r-btn);padding:11px 18px;font-weight:650;box-shadow:0 5px 12px rgba(33,102,83,.1)}
+.btn.secondary{box-shadow:none;background:var(--card)}
+.btn.danger{background:#a94b3d}
+.actions{gap:10px;margin-top:24px}
+.banner,.map-selection{border-radius:var(--r-card);background:var(--ink);box-shadow:0 12px 26px rgba(29,43,37,.12)}
+.banner::after,.map-selection::after{border-color:rgba(185,216,202,.22)}
+.empty{border-radius:var(--r-card);background:var(--card)}
+.home-sample{gap:30px;padding:16px;margin:38px 0}
+.home-sample-media img{border-radius:10px}
+.home-sample-body{padding:16px 16px 14px 2px}
+.sample-phrase{border-left-width:4px;border-radius:10px;background:linear-gradient(90deg,rgba(33,102,83,.09),rgba(33,102,83,.025))}
+.sample-details summary{font-weight:650}
+.route-card,.region-card,.photo-story{overflow:hidden}
+.route-card .region-cover-image,.region-card .region-cover-image{border-radius:10px}
+.bar{height:8px;border-radius:999px;background:#e5e7df}
+.bar i{border-radius:999px;background:linear-gradient(90deg,var(--accent),#9b7a46)}
+.scene-cover{border-radius:var(--r-card)}
+.scene-cover.has-image{border-color:var(--line)}
+.columns{gap:30px}
+.columns>aside{top:100px}
+.columns>*{min-width:0}
+.meta{flex-wrap:wrap;gap:4px 12px}
+.fact{border-left-width:3px;border-radius:10px;background:var(--plate-bg)}
+.player,.readings,.rec-practice{border-radius:12px;background:var(--paper-deep)}
+.language{border-radius:12px;background:linear-gradient(135deg,var(--paper-deep),var(--card))}
+.option{border-radius:10px;padding:13px 15px}
+.result,.qa-result{border-radius:10px}
+.timeline .card{border-radius:12px;border-left-width:3px}
+.step{border-radius:9px}
+.grid.cols4 .card{border-radius:12px}
+.mini-btn,a.mini-btn,.fav-chip,.phrase-tools button,.qa-suggest-btn{border-radius:8px}
+.photo-story img{border-radius:10px 10px 0 0}
+.map-selection{padding:28px 30px}
+/* 完整地图：SVG 与三维共用纸本外观；不影响路线页的地图插槽。 */
+.replica-atlas{--atlas-rule:#ded8c8;--atlas-ink:#202e28;border:1px solid var(--atlas-rule);border-radius:var(--r-card);background:var(--paper);box-shadow:var(--shadow-card)}
+.replica-atlas .replica-header{background:var(--paper);padding:clamp(14px,2vw,26px) clamp(16px,3.2vw,44px) 16px;border-color:var(--atlas-rule)}
+.replica-atlas .atlas-eyebrow{color:var(--accent-deep);font-weight:650;letter-spacing:.15em}
+.replica-atlas .replica-header h1{font:600 clamp(1.75rem,3.6vw,3.25rem)/1.17 SimSun,"Songti SC",serif;letter-spacing:.035em;margin-top:5px}
+.replica-atlas .replica-dot{padding:0;font-size:.72em}
+.replica-atlas .replica-header h1::after{display:none}
+.replica-atlas .replica-sub{gap:5px 15px;margin-top:12px}
+.replica-atlas .replica-tag{color:var(--atlas-ink);font-weight:500}
+.replica-atlas .replica-tag i,.replica-atlas .replica-legend-row i{border:1px solid var(--swatch-line);border-radius:2px}
+.replica-atlas .atlas-introduction{margin:8px 0 0;color:var(--ink-soft)}
+.replica-atlas .atlas-toolbar{padding:8px clamp(12px,3.2vw,44px);background:#f4f2e8;border-color:var(--atlas-rule)}
+.replica-atlas .atlas-controls button{border:1px solid #9b9986;border-radius:var(--r-btn);background:var(--paper);color:var(--ink)}
+.replica-atlas .atlas-controls button:hover:not(:disabled){background:var(--jade-soft);border-color:var(--accent)}
+.replica-atlas .atlas-controls button:not(:disabled)[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.replica-atlas #replica-map{height:clamp(470px,54vh,680px);background:repeating-linear-gradient(90deg,#e7dfcd88 0 1px,transparent 1px 36px),repeating-linear-gradient(0deg,#e7dfcd88 0 1px,transparent 1px 36px),#f8f5e9}
+.replica-atlas .atlas-hover-label{color:var(--atlas-ink);border-color:#bbb29a;background:#fffdf8f5;max-width:calc(100% - 32px);border-radius:6px}
+.replica-atlas .atlas3d-label{color:var(--atlas-ink);text-shadow:0 1px 1px #fffdf8,0 0 5px #fffdf8}
+.replica-atlas .atlas-surface{stroke:#887a62;stroke-width:1}
+.replica-atlas .atlas-region:hover .atlas-surface{stroke:#887a62;stroke-width:1.5}
+.replica-atlas .atlas-region:focus-visible .atlas-surface{stroke:var(--accent-deep);stroke-width:3}
+.replica-atlas .atlas-city-label{fill:var(--atlas-ink);stroke:#faf4e6}
+.replica-atlas .replica-legend,.replica-atlas .replica-footer{border-color:var(--atlas-rule);background:var(--paper)}
+.replica-atlas .replica-legend-row,.replica-atlas .legend-territories a{border-radius:var(--r-btn)}
+.atlas3d-route-slot{border-radius:12px;background:radial-gradient(ellipse at 50% 55%,#e9f0e8,transparent 72%),var(--paper-deep)}
+body>footer{background:var(--paper);border-top:1px solid var(--hairline);flex-wrap:wrap}
+.nb-spread{border-radius:var(--r-card);box-shadow:0 12px 28px rgba(65,69,48,.11);background:var(--paper)}
+.nb-leaf{background:linear-gradient(90deg,transparent 96%,rgba(81,76,51,.11))}
+.nb-right{background:linear-gradient(90deg,rgba(81,76,51,.1),transparent 4%)}
+.nb-title{font-weight:600}
+.nb-pin{border-radius:var(--r-btn)}
+.nb-preview .nb-kicker{font-variant-numeric:tabular-nums}
+.nb-preview .nb-enter{background:var(--accent)}
+.nb-pin:has(:checked){background:var(--accent);border-color:var(--accent)}
+.nb-other{max-width:1120px;margin:18px auto 0;padding-inline:6px}
+.home-secondary{max-width:1120px;margin-inline:auto}
+/* 地图册的快捷目录：在选站下方复用路线卡信息，不影响地图本体和图层。 */
+.home-routes{margin:36px 0 40px}
+.home-routes .head{margin:0 0 16px}
+.route-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.route-card.route-card-compact{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:12px 18px;padding:20px}
+.route-card-compact h3{margin:0 0 4px}
+.route-card-index{font:1.35rem Georgia,serif;color:#a24130}
+.route-card-time{font-size:.8125rem;color:var(--muted);white-space:nowrap}
+.route-card-time span{margin-inline-start:6px;color:var(--accent)}
+.yingge-entry-card{border-radius:var(--r-card);box-shadow:var(--shadow-card)}
+.yingge-entry-cta{border-radius:var(--r-btn)}
+@media(max-width:880px){
+  body>header{height:auto;min-height:0;flex-wrap:wrap;gap:4px 8px;padding:8px 16px 6px}
+  body>header nav{order:3;display:flex;flex-basis:100%;justify-content:space-between;gap:0}
+  body>header nav a{font-size:.75rem;padding:9px clamp(3px,1.6vw,12px);line-height:1.45}
+  html.atlas3d-on body>header .atlas3d-where{display:none}
+  body>main{padding-inline:20px}
+}
+@media(max-width:720px){
+  .nb-leaf,.nb-right{background:none}
+  .nb-preview h2{margin:5px 0 10px}
+  .nb-preview .nb-enter{margin-bottom:14px}
+  .nb-preview .nb-station-art{order:1}
+  .nb-preview footer{order:2}
+  .home-routes{margin:26px 0 32px}
+  .route-grid{grid-template-columns:minmax(0,1fr)}
+  .route-card.route-card-compact{grid-template-columns:auto minmax(0,1fr);gap:4px 12px}
+  .route-card-time{grid-column:2}
+}
+@media(max-width:520px){
+  body>main{padding:28px 15px 52px}
+  body>main:has(.nb-spread){padding-top:18px}
+  .card{padding:18px}
+  .grid,.columns{gap:16px}
+  .home-sample-body{padding:10px 8px 14px}
+  .replica-atlas .atlas-controls button{min-height:40px}
+  .replica-atlas .replica-sub{gap:5px 12px}
+  .replica-atlas #replica-map{height:420px}
+}
