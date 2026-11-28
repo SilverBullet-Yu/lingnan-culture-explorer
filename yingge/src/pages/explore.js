@@ -10,7 +10,7 @@
 import { chapters, culture, esc, fav, isExplored, exploredCount, knowledge, knowledgeList, markExplored, save, sceneData, scenes, sourceFor, state, toggleFav, safeUrl } from '../store.js';
 import { faceSvg } from '../story/mask.js';
 import { LOADER } from '../motionx.js';
-import { getWork } from '../works-db.js';
+import { getWork, putWork } from '../works-db.js';
 import { popEl, slidePanel } from '../motionx.js';
 import { mountSoundDemo } from '../story/rhythm.js';
 import { registerStageCleanup } from '../story/flow.js';
@@ -312,19 +312,17 @@ export function bindExplorePage() {
     if (saveBtn) saveBtn.onclick = function () {
       var text = document.getElementById('observe-detail').value.replace(/^\s+|\s+$/g, '');
       if (!text) { alert('先写下一个你观察到的细节。'); return }
-      dbmod.then(function (db) {
-        return db.getWork(workId).then(function (work) {
-          if (!work) throw new Error('作品记录不存在，请重新打开作品');
-          work.observe = text;
-          return db.putWork(work);
-        });
+      getWork(workId).then(function (work) {
+        if (!work) throw new Error('作品记录不存在，请重新打开作品');
+        work.observe = text;
+        return putWork(work);
       }).then(function () {
         /* 索引同步一句摘要 */
         var idx = state.works.filter(function (w) { return w.id === workId })[0];
         if (idx) idx.observe = text;
         var saved = save();
-        saveBtn.textContent = saved ? '已保存到作品记录' : '已写入作品，索引未保存，请导出记录';
-        saveBtn.disabled = true;
+        saveBtn.textContent = saved ? '已保存到作品记录' : '已写入作品，索引未保存，请重试';
+        saveBtn.disabled = saved;
       }).catch(function (e) { alert('保存失败：' + e) });
     };
   }
